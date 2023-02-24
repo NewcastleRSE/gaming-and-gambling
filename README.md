@@ -29,23 +29,32 @@ Newcastle University
 
 ## Built With
 
-[TailWind](https://tailwind.com) 
+[Vite](https://vitejs.dev/)
+[TailWind](https://tailwind.com)  
 [GitHub Pages](https://github.com)  
-[Figma](https://figma.com)
+[Figma](https://figma.com)  
 
 ## Getting Started
 
 ### Prerequisites
 
-Any tools or versions of languages needed to run code. For example specific Python or Node versions. Minimum hardware requirements also go here.
+A LTS version of NodeJS is required, and it is recommended to use [yarn](https://yarnpkg.com/) over npm.
 
 ### Installation
 
-How to build or install the applcation.
+To install the dependencies run
+
+```bash
+yarn install
+```
 
 ### Running Locally
 
-How to run the application on your local system.
+To run the application in dev mode, run:
+
+```bash
+yarn dev
+```
 
 ### Running Tests
 
@@ -55,11 +64,21 @@ How to run tests on your local system.
 
 ### Local
 
-Deploying to a production style setup but on the local system. Examples of this would include `venv`, `anaconda`, `Docker` or `minikube`. 
+The application can be served using the built-in vite webs server. 
+
+```bash
+yarn dev
+```
+Watch the console for the port number that is serving the content.
 
 ### Production
 
-Deploying to the production system. Examples of this would include cloud, HPC or virtual machine. 
+The run the production code locally, first build the minified files.
+
+```bash
+yarn build
+```
+This creates a `dist` folder containing all the production files. This can be served locally with a simple web server or be uploaded somewhere to be made public. There are GitHub workflows included for deploying the application using GitHub pages.
 
 ## Usage
 
@@ -68,7 +87,7 @@ Any links to production environment, video demos and screenshots.
 ## Roadmap
 
 - [x] Initial Research  
-- [ ] Minimum viable product <-- You are Here  
+- [x] Minimum viable product  
 - [ ] Alpha Release  
 - [ ] Feature-Complete Release  
 
