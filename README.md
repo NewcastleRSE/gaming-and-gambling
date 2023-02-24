@@ -29,7 +29,7 @@ Newcastle University
 
 ## Built With
 
-[Vite](https://vitejs.dev/)
+[Vite](https://vitejs.dev/)  
 [TailWind](https://tailwind.com)  
 [GitHub Pages](https://github.com)  
 [Figma](https://figma.com)  
@@ -38,7 +38,7 @@ Newcastle University
 
 ### Prerequisites
 
-A LTS version of NodeJS is required, and it is recommended to use [yarn](https://yarnpkg.com/) over npm.
+An LTS version of NodeJS is required, and it is recommended to use [yarn](https://yarnpkg.com/) over npm.
 
 ### Installation
 
