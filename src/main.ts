@@ -1,20 +1,28 @@
 import './style.css'
 import background from './images/backgrounds/background.svg'
+import name from './images/name.png'
+import play from './images/btn-lg.png'
 
 let stageWidth: number = 1920,
     stageHeight: number = 1080
 
 document.querySelector<HTMLDivElement>('#app')!.innerHTML = `
-  <div id="background" class="drop-shadow-lg aspect-video">
-    <embed id="stage" src="${background}"></embed>
+  <div id="wrapper" class="drop-shadow-lg aspect-video relative">
+    <embed id="stage" class="absolute" src="${background}"></embed>
+    <div id="intro-container" class="flex justify-center">
+      <div class="animate-bounce">
+        <img class="mt-24" src="${name}">
+      </div>
+      <div class="btn btn-lg btn-bottom-pos centre-btn"></div>
+    </div>
   </div>
 `
 
 function init() {
   console.log(background)
 
-  stageHeight = document.querySelector<HTMLDivElement>('#background')!.offsetHeight
-  stageWidth = document.querySelector<HTMLDivElement>('#background')!.offsetWidth
+  stageHeight = document.querySelector<HTMLDivElement>('#wrapper')!.offsetHeight
+  stageWidth = document.querySelector<HTMLDivElement>('#wrapper')!.offsetWidth
 
   console.log(stageHeight, stageWidth)
 }
