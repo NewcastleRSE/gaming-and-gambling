@@ -19,12 +19,8 @@ document.querySelector<HTMLDivElement>('#app')!.innerHTML = `
 `
 
 function init() {
-  console.log(background)
-
   stageHeight = document.querySelector<HTMLDivElement>('#wrapper')!.offsetHeight
   stageWidth = document.querySelector<HTMLDivElement>('#wrapper')!.offsetWidth
-
-  console.log(stageHeight, stageWidth)
 }
 
 document.querySelector<HTMLDivElement>('#stage')!.addEventListener('load', () => {
@@ -32,11 +28,10 @@ document.querySelector<HTMLDivElement>('#stage')!.addEventListener('load', () =>
   const vegetablePatch = getContentDocument(stage).querySelector('g#vegetablePatch')
 
   vegetablePatch.addEventListener('click', (event: PointerEvent) => {
-    console.log(event)
+    console.log('Dig Potato: ', event)
   })
 
 })
-
 
 function getContentDocument(embeddingElement: any) {
   if (embeddingElement.contentDocument) {
