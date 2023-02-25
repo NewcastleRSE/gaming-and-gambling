@@ -2,6 +2,11 @@
 @tailwind components;
 @tailwind utilities;
 
-body {
-    background-image: '/background.png';
+body, #app {
+    width: 100vw;
+    min-height: 100vh;
+}
+
+#app {
+    padding: 2rem;
 }
