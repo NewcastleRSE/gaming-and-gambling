@@ -2,6 +2,15 @@
 @tailwind components;
 @tailwind utilities;
 
+@font-face {
+    font-family: LapsusProBold;
+    src: url("fonts/LapsusPro-Bold.otf") format("opentype");
+}
+
+.hidden {
+    display: none !important;
+}
+
 body, #app {
     width: 100vw;
     min-height: 100vh;
@@ -9,4 +18,20 @@ body, #app {
 
 #app {
     padding: 2rem;
+}
+
+#welcomeMessage {
+    background-image: url('./images/info-panel-bg.png');
+    border-color: #F9A29F;
+}
+
+.btn-game {
+    background-image: url('./images/btn-long.png');
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+    width: 159px;
+    height: 48px;
+    display: block;
+    color: white;
 }
