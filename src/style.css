@@ -20,7 +20,7 @@ body, #app {
     padding: 2rem;
 }
 
-#welcomeMessage {
+.modal {
     background-image: url('./images/info-panel-bg.png');
     border-color: #F9A29F;
 }
