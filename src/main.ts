@@ -2,6 +2,7 @@ import './style.css'
 import * as Potato from './games/potato'
 import * as Utils from './utils'
 import * as Modals from './modals'
+import * as Menu from './menu'
 import background from './images/backgrounds/background.svg'
 import name from './images/name.png'
 
@@ -16,8 +17,12 @@ document.querySelector<HTMLDivElement>('#app')!.innerHTML = `
       </div>
       <button id="playBtn" class="mx-auto btn-game -mt-36">Play</button>
     </div> 
+    <div id="menu" class="hidden w-1/2 mx-auto pt-4">
+      
+    </div>
   </div>
 `
+Menu.init()
 
 document.querySelector<HTMLDivElement>('#app')!.append(Modals.welcome())
 document.querySelector<HTMLDivElement>('#app')!.append(Modals.digIn())
@@ -27,6 +32,7 @@ const elements = {
   start: document.querySelector<HTMLDivElement>('#start'),
   welcome: document.querySelector<HTMLDivElement>('#welcome'),
   digIn: document.querySelector<HTMLDivElement>('#digIn'),
+  menu: document.querySelector<HTMLDivElement>('#menu'),
 }
 
 elements.stage!.addEventListener('load', () => {
@@ -51,4 +57,5 @@ elements.welcome!.querySelector<HTMLDivElement>('#continueBtn')!.addEventListene
 
 elements.digIn!.querySelector<HTMLDivElement>('#digInBtn')!.addEventListener('click', () => {
   elements.digIn!.classList.toggle('hidden')
+  elements.menu!.classList.toggle('hidden')
 })
