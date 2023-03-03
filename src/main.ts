@@ -5,14 +5,16 @@ import * as Modals from './modals'
 import * as Menu from './menu'
 import background from './images/backgrounds/background.svg'
 import name from './images/name.png'
+import dig from './images/dig.gif'
 
 document.querySelector<HTMLDivElement>('#app')!.innerHTML = `
   <div id="wrapper" class="drop-shadow-lg aspect-video relative h-full">
     <embed id="stage" class="absolute -z-50" src="${background}"></embed>
+    <img id="dig-animation" class="hidden fixed" src="${dig}" alt="dig" />
     <div id="start" class="flex flex-col grid place-items-center">
       <div id="title">
         <div class="animate-bounce">
-          <img class="mx-auto" src="${name}">
+          <img class="mx-auto" src="${name}" alt="name" />
         </div>
       </div>
       <button id="playBtn" class="mx-auto btn-game -mt-36">Play</button>
@@ -45,8 +47,8 @@ elements.stage!.addEventListener('load', () => {
 
   elements.start!.style.height = elements.stage?.offsetHeight + 'px'
 
-  vegetablePatch.addEventListener('click', () => {
-    console.log(Potato.dig())
+  vegetablePatch.addEventListener('click', (event: PointerEvent) => {
+    Potato.dig(event.clientX, event.clientY)
   })
 })
 
