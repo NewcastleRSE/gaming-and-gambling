@@ -27,11 +27,11 @@ export function init() {
     })
 
     menu!.querySelector<HTMLDivElement>('#inventoryBtn')!.addEventListener('click', () => {
-        console.log('inventory')
+        document.querySelector<HTMLDivElement>('#inventory')!.classList.toggle('hidden')
     })
 
     menu!.querySelector<HTMLDivElement>('#infoBtn')!.addEventListener('click', () => {
-        console.log('info')
+        document.querySelector<HTMLDivElement>('#info')!.classList.toggle('hidden')
     })
 
     menu!.querySelector<HTMLDivElement>('#soundBtn')!.addEventListener('click', () => {
@@ -39,6 +39,6 @@ export function init() {
     })
 
     menu!.querySelector<HTMLDivElement>('#oddsBtn')!.addEventListener('click', () => {
-        console.log('odds')
+        document.querySelector<HTMLDivElement>('#odds')!.classList.toggle('hidden')
     })
 }

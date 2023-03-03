@@ -26,6 +26,9 @@ Menu.init()
 
 document.querySelector<HTMLDivElement>('#app')!.append(Modals.welcome())
 document.querySelector<HTMLDivElement>('#app')!.append(Modals.digIn())
+document.querySelector<HTMLDivElement>('#app')!.append(Modals.inventory())
+document.querySelector<HTMLDivElement>('#app')!.append(Modals.info())
+document.querySelector<HTMLDivElement>('#app')!.append(Modals.odds())
 
 const elements = {
   stage: document.querySelector<HTMLDivElement>('#stage'),
@@ -33,6 +36,8 @@ const elements = {
   welcome: document.querySelector<HTMLDivElement>('#welcome'),
   digIn: document.querySelector<HTMLDivElement>('#digIn'),
   menu: document.querySelector<HTMLDivElement>('#menu'),
+  info: document.querySelector<HTMLDivElement>('#info'),
+  odds: document.querySelector<HTMLDivElement>('#odds'),
 }
 
 elements.stage!.addEventListener('load', () => {
@@ -58,4 +63,12 @@ elements.welcome!.querySelector<HTMLDivElement>('#continueBtn')!.addEventListene
 elements.digIn!.querySelector<HTMLDivElement>('#digInBtn')!.addEventListener('click', () => {
   elements.digIn!.classList.toggle('hidden')
   elements.menu!.classList.toggle('hidden')
+})
+
+elements.info!.querySelector<HTMLDivElement>('#closeInfoBtn')!.addEventListener('click', () => {
+  elements.info!.classList.toggle('hidden')
+})
+
+elements.odds!.querySelector<HTMLDivElement>('#closeOddsBtn')!.addEventListener('click', () => {
+  elements.odds!.classList.toggle('hidden')
 })
