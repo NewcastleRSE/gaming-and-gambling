@@ -1,5 +1,7 @@
+import * as backgrounds from './../../images/inventory/'
+import * as items from './../../images/items/'
+
 export function dig(x: number, y: number) {
-    console.log(x, y)
     const digAnimation = document.querySelector<HTMLDivElement>('#dig-animation')
 
     digAnimation!.style.left = `${x-224}px`
@@ -7,4 +9,7 @@ export function dig(x: number, y: number) {
     digAnimation!.classList.toggle('hidden')
 
     setTimeout(() => { digAnimation!.classList.toggle('hidden') }, 2000)
+
+    console.log(backgrounds.veryRare)
+    console.log(items.balloon)
 }
