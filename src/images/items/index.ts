@@ -27,33 +27,161 @@ import miniPotato from './toy-mini-potato.png'
 import nurseryBook from './toy-nursery-book.png'
 import teddyBear from './toy-teddy-bear.png'
 
-export {
-    balloon,
-    bowTie,
-    burger,
-    coffee,
-    handbag,
-    newspaper,
-    smartphone,
-    sunglasses,
-    baseball,
-    bunnyEars,
-    headband,
-    plainRed,
-    sunVisor,
-    tinCan,
-    topHat,
-    woolly,
-    gold,
-    normal,
-    spotty,
-    bejewelled,
-    clown,
-    neonDance,
-    plainBrown,
-    rainbow,
-    shinyWork,
-    miniPotato,
-    nurseryBook,
-    teddyBear
+enum Rarity {
+    None='none',
+    Common='common',
+    Rare='rare',
+    VeryRare='veryRare',
+    Legendary='legendary'
 }
+
+enum Type {
+    Accessory='accessory',
+    Hat='hat',
+    Potato='potato',
+    Shoes='shoes',
+    Toy='toy'
+}
+
+export default [
+    {
+        type: Type.Accessory,
+        rarity: Rarity.Rare,
+        image: balloon
+    },
+    {
+        type: Type.Accessory,
+        rarity: Rarity.VeryRare,
+        image: bowTie
+    },
+    {
+        type: Type.Accessory,
+        rarity: Rarity.Legendary,
+        image: burger
+    },
+    {
+        type: Type.Accessory,
+        rarity: Rarity.Rare,
+        image: coffee
+    },
+    {
+        type: Type.Accessory,
+        rarity: Rarity.Common,
+        image: handbag
+    },
+    {
+        type: Type.Accessory,
+        rarity: Rarity.Common,
+        image: newspaper
+    },
+    {
+        type: Type.Accessory,
+        rarity: Rarity.Common,
+        image: smartphone
+    },
+    {
+        type: Type.Accessory,
+        rarity: Rarity.Common,
+        image: sunglasses
+    },
+    {
+        type: Type.Hat,
+        rarity: Rarity.Common,
+        image: baseball
+    },
+    {
+        type: Type.Hat,
+        rarity: Rarity.VeryRare,
+        image: bunnyEars
+    },
+    {
+        type: Type.Hat,
+        rarity: Rarity.VeryRare,
+        image: headband
+    },
+    {
+        type: Type.Hat,
+        rarity: Rarity.Common,
+        image: plainRed
+    },
+    {
+        type: Type.Hat,
+        rarity: Rarity.Rare,
+        image: sunVisor
+    },
+    {
+        type: Type.Hat,
+        rarity: Rarity.Legendary,
+        image: tinCan
+    },
+    {
+        type: Type.Hat,
+        rarity: Rarity.VeryRare,
+        image: topHat
+    },
+    {
+        type: Type.Hat,
+        rarity: Rarity.Common,
+        image: woolly
+    },
+    {
+        type: Type.Potato,
+        rarity: Rarity.Legendary,
+        image: gold
+    },
+    {
+        type: Type.Potato,
+        rarity: Rarity.None,
+        image: normal
+    },
+    {
+        type: Type.Potato,
+        rarity: Rarity.VeryRare,
+        image: spotty
+    },
+    {
+        type: Type.Shoes,
+        rarity: Rarity.Rare,
+        image: bejewelled
+    },
+    {
+        type: Type.Shoes,
+        rarity: Rarity.Rare,
+        image: clown
+    },
+    {
+        type: Type.Shoes,
+        rarity: Rarity.Legendary,
+        image: neonDance
+    },
+    {
+        type: Type.Shoes,
+        rarity: Rarity.Common,
+        image: plainBrown
+    },
+    {
+        type: Type.Shoes,
+        rarity: Rarity.VeryRare,
+        image: rainbow
+    },
+    {
+        type: Type.Shoes,
+        rarity: Rarity.Common,
+        image: shinyWork
+    },
+    {
+        type: Type.Toy,
+        rarity: Rarity.Rare,
+        image: miniPotato
+    },
+    {
+        type: Type.Toy,
+        rarity: Rarity.Rare,
+        image: nurseryBook
+    },
+    {
+        type: Type.Toy,
+        rarity: Rarity.Rare,
+        image: teddyBear
+    }
+]
