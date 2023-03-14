@@ -5,6 +5,8 @@ import info from './images/buttons/info.png'
 import sound from './images/buttons/speaker.png'
 import odds from './images/buttons/tree.png'
 
+import * as Potato from './games/potato'
+
 export function init() {
     document.querySelector<HTMLDivElement>('#menu')!.innerHTML = `
     <div class="grid place-items-center gap-4 grid-cols-6">
@@ -27,6 +29,16 @@ export function init() {
     })
 
     menu!.querySelector<HTMLDivElement>('#inventoryBtn')!.addEventListener('click', () => {
+        console.log(Potato.availableItems)
+
+        let potato = Potato.availableItems.find(item => item.type === 'potato' && item.selected)
+
+        if(!potato) {
+            potato = Potato.availableItems.find(item => item.rarity === 'none')
+        }
+
+        document.querySelector<HTMLDivElement>('#potatoBackground')?.setAttribute('src', potato.image)
+
         document.querySelector<HTMLDivElement>('#inventory')!.classList.toggle('hidden')
     })
 

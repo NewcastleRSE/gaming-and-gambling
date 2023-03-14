@@ -39,6 +39,7 @@ const elements = {
   welcome: document.querySelector<HTMLDivElement>('#welcome'),
   digIn: document.querySelector<HTMLDivElement>('#digIn'),
   menu: document.querySelector<HTMLDivElement>('#menu'),
+  inventory: document.querySelector<HTMLDivElement>('#inventory'),
   info: document.querySelector<HTMLDivElement>('#info'),
   odds: document.querySelector<HTMLDivElement>('#odds'),
   foundItem: document.querySelector<HTMLDivElement>('#foundItem'),
@@ -69,6 +70,10 @@ elements.digIn!.querySelector<HTMLDivElement>('#digInBtn')!.addEventListener('cl
   elements.menu!.classList.toggle('hidden')
 })
 
+elements.inventory!.querySelector<HTMLDivElement>('#inventoryCloseBtn')!.addEventListener('click', () => {
+  elements.inventory!.classList.toggle('hidden')
+})
+
 elements.info!.querySelector<HTMLDivElement>('#closeInfoBtn')!.addEventListener('click', () => {
   elements.info!.classList.toggle('hidden')
 })
@@ -79,4 +84,5 @@ elements.odds!.querySelector<HTMLDivElement>('#closeOddsBtn')!.addEventListener(
 
 elements.foundItem!.querySelector<HTMLDivElement>('#foundItemBtn')!.addEventListener('click', () => {
   elements.foundItem!.classList.toggle('hidden')
+  console.log(Potato.availableItems)
 })

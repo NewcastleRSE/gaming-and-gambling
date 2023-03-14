@@ -1,5 +1,3 @@
-import * as backgrounds from './../../images/inventory/'
-import * as Modals from './../../modals'
 import items from './../../images/items/'
 
 function itemProbability() {
@@ -13,7 +11,7 @@ function itemProbability() {
     return chances[idx]
   }
 
-const availableItems = items.filter(item => item.rarity !== 'none')
+const availableItems = items.map(item => ({ ...item, selected: false, found: false }))
 
 const itemsRemaining = {
     common: availableItems.filter(item => item && item.rarity === 'common'),
@@ -21,6 +19,8 @@ const itemsRemaining = {
     veryRare: availableItems.filter(item => item && item.rarity === 'veryRare'),
     legendary: availableItems.filter(item => item && item.rarity === 'legendary')
 }
+
+export { availableItems }
 
 export function dig(x: number, y: number) {
     const digAnimation = document.querySelector<HTMLDivElement>('#dig-animation')
@@ -36,7 +36,8 @@ export function dig(x: number, y: number) {
 
         if(itemsRemaining[foundItemRarity].length) {
             const find = itemsRemaining[foundItemRarity].pop()
-            console.log(find)
+            
+            availableItems[availableItems.indexOf(find)].found = true
 
             document.querySelector<HTMLDivElement>('#foundItem #foundItemName')!.innerText = `${find.name} ${find.type}`
             document.querySelector<HTMLDivElement>('#foundItem #foundItemImage')!.setAttribute('alt', find.name)
