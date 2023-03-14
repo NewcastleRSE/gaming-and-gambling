@@ -37,6 +37,12 @@ export function dig(x: number, y: number) {
         if(itemsRemaining[foundItemRarity].length) {
             const find = itemsRemaining[foundItemRarity].pop()
             console.log(find)
+
+            document.querySelector<HTMLDivElement>('#foundItem #foundItemName')!.innerText = `${find.name} ${find.type}`
+            document.querySelector<HTMLDivElement>('#foundItem #foundItemImage')!.setAttribute('alt', find.name)
+            document.querySelector<HTMLDivElement>('#foundItem #foundItemImage')!.setAttribute('src', find.image)
+            
+            document.querySelector<HTMLDivElement>('#foundItem')!.classList.toggle('hidden')
         }    
         else {
             console.log({
