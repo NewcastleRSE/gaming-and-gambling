@@ -1,31 +1,25 @@
 import * as backgrounds from './../../images/inventory/'
+import * as Modals from './../../modals'
 import items from './../../images/items/'
 
-function shuffle(array: Array<any>) {
-    let currentIndex = array.length,  randomIndex;
-  
-    // While there remain elements to shuffle.
-    while (currentIndex != 0) {
-  
-      // Pick a remaining element.
-      randomIndex = Math.floor(Math.random() * currentIndex);
-      currentIndex--;
-  
-      // And swap it with the current element.
-      [array[currentIndex], array[randomIndex]] = [
-        array[randomIndex], array[currentIndex]];
-    }
-  
-    return array;
-}
+function itemProbability() {
+    var chances = [
+        ...Array(50).fill('common'),
+        ...Array(30).fill('rare'),
+        ...Array(15).fill('veryRare'),
+        ...Array(5).fill('legendary')
+    ]
+    var idx = Math.floor(Math.random() * chances.length)
+    return chances[idx]
+  }
 
-const sequence = shuffle([...items.filter(item => item.rarity !== 'none'), ...Array(73).fill(null)])
+const availableItems = items.filter(item => item.rarity !== 'none')
 
 const itemsRemaining = {
-    common: sequence.filter(item => item && item.rarity === 'common').length,
-    rare: sequence.filter(item => item && item.rarity === 'rare').length,
-    veryRare: sequence.filter(item => item && item.rarity === 'veryRare').length,
-    legendary: sequence.filter(item => item && item.rarity === 'legendary').length
+    common: availableItems.filter(item => item && item.rarity === 'common'),
+    rare: availableItems.filter(item => item && item.rarity === 'rare'),
+    veryRare: availableItems.filter(item => item && item.rarity === 'veryRare'),
+    legendary: availableItems.filter(item => item && item.rarity === 'legendary')
 }
 
 export function dig(x: number, y: number) {
@@ -38,15 +32,19 @@ export function dig(x: number, y: number) {
     setTimeout(() => { 
         digAnimation!.classList.toggle('hidden')
 
-        // Get the next rarity value
-        const find = sequence.pop()
+        const foundItemRarity = itemProbability()
 
-        if(find) {
-            itemsRemaining[find.rarity] = itemsRemaining[find.rarity] - 1
+        if(itemsRemaining[foundItemRarity].length) {
+            const find = itemsRemaining[foundItemRarity].pop()
             console.log(find)
-        }       
-        
-        console.log(`Next Item: ${sequence[sequence.length-1].image} Chances left: ${sequence.length}`)
-    
+        }    
+        else {
+            console.log({
+                common: itemsRemaining.common.length,
+                rare: itemsRemaining.rare.length,
+                veryRare: itemsRemaining.veryRare.length,
+                legendary: itemsRemaining.legendary.length,
+            })
+        }
     }, 500)
 }
