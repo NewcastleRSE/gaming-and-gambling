@@ -33,7 +33,8 @@ export function inventory() {
             
             </div>
             <div class="basis-1/2 relative">
-                <img id="potatoBackground" class="absolute" />
+                <img id="potatoBackground" class="absolute top-0 left-0" />
+                <img src="/src/images/items/hat-woolly.png" class="absolute top-0 left-0" />
             </div>
         </div>
         <button id="inventoryCloseBtn" class="mx-auto btn-game">Close</button>
