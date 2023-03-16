@@ -35,3 +35,19 @@ body, #app {
     display: block;
     color: white;
 }
+
+.item.common {
+    background-color: #65EDF3;
+}
+
+.item.rare {
+    background-color: #BBDC3E;
+}
+
+.item.veryRare {
+    background-color: #F099FF;
+}
+
+.item.legendary {
+    background-color: #F6B777;
+}
