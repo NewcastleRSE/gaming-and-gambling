@@ -52,7 +52,7 @@ import nurseryBookThumbnail  from './toy-nursery-book-thumbnail.png'
 import teddyBear from './toy-teddy-bear.png'
 import teddyBearThumbnail  from './toy-teddy-bear-thumbnail.png'
 
-enum Rarity {
+export enum Rarities {
     None='none',
     Common='common',
     Rare='rare',
@@ -60,7 +60,7 @@ enum Rarity {
     Legendary='legendary'
 }
 
-enum Type {
+export enum Types {
     Accessory='accessory',
     Hat='hat',
     Potato='potato',
@@ -68,200 +68,200 @@ enum Type {
     Toy='toy'
 }
 
-export default [
+export const items = [
     {
         name: 'balloon',
-        type: Type.Accessory,
-        rarity: Rarity.Rare,
+        type: Types.Accessory,
+        rarity: Rarities.Rare,
         image: balloon,
         thumbnail: balloonThumbnail
     },
     {
         name: 'bow tie',
-        type: Type.Accessory,
-        rarity: Rarity.VeryRare,
+        type: Types.Accessory,
+        rarity: Rarities.VeryRare,
         image: bowTie,
         thumbnail: bowTieThumbnail
     },
     {
         name: 'burger',
-        type: Type.Accessory,
-        rarity: Rarity.Legendary,
+        type: Types.Accessory,
+        rarity: Rarities.Legendary,
         image: burger,
         thumbnail: burgerThumbnail
     },
     {
         name: 'coffee cup',
-        type: Type.Accessory,
-        rarity: Rarity.Rare,
+        type: Types.Accessory,
+        rarity: Rarities.Rare,
         image: coffeeCup,
         thumbnail: coffeeCupThumbnail
     },
     {
         name: 'handbag',
-        type: Type.Accessory,
-        rarity: Rarity.Common,
+        type: Types.Accessory,
+        rarity: Rarities.Common,
         image: handbag,
         thumbnail: handbagThumbnail
     },
     {
         name: 'newspaper',
-        type: Type.Accessory,
-        rarity: Rarity.Common,
+        type: Types.Accessory,
+        rarity: Rarities.Common,
         image: newspaper,
         thumbnail: newspaperThumbnail
     },
     {
         name: 'smartphone',
-        type: Type.Accessory,
-        rarity: Rarity.Common,
+        type: Types.Accessory,
+        rarity: Rarities.Common,
         image: smartphone,
         thumbnail: smartphoneThumbnail
     },
     {
         name: 'sunglasses',
-        type: Type.Accessory,
-        rarity: Rarity.Common,
+        type: Types.Accessory,
+        rarity: Rarities.Common,
         image: sunglasses,
         thumbnail: sunglassesThumbnail
     },
     {
         name: 'baseball',
-        type: Type.Hat,
-        rarity: Rarity.Common,
+        type: Types.Hat,
+        rarity: Rarities.Common,
         image: baseball,
         thumbnail: baseballThumbnail
     },
     {
         name: 'bunny ears',
-        type: Type.Hat,
-        rarity: Rarity.VeryRare,
+        type: Types.Hat,
+        rarity: Rarities.VeryRare,
         image: bunnyEars,
         thumbnail: bunnyEarsThumbnail
     },
     {
         name: 'headband',
-        type: Type.Hat,
-        rarity: Rarity.VeryRare,
+        type: Types.Hat,
+        rarity: Rarities.VeryRare,
         image: headband,
         thumbnail: headbandThumbnail
     },
     {
         name: 'plain red',
-        type: Type.Hat,
-        rarity: Rarity.Common,
+        type: Types.Hat,
+        rarity: Rarities.Common,
         image: plainRed,
         thumbnail: plainRedThumbnail
     },
     {
         name: 'sun visor',
-        type: Type.Hat,
-        rarity: Rarity.Rare,
+        type: Types.Hat,
+        rarity: Rarities.Rare,
         image: sunVisor,
         thumbnail: sunVisorThumbnail
     },
     {
         name: 'tin can',
-        type: Type.Hat,
-        rarity: Rarity.Legendary,
+        type: Types.Hat,
+        rarity: Rarities.Legendary,
         image: tinCan,
         thumbnail: tinCanThumbnail
     },
     {
         name: 'top',
-        type: Type.Hat,
-        rarity: Rarity.VeryRare,
+        type: Types.Hat,
+        rarity: Rarities.VeryRare,
         image: topHat,
         thumbnail: topHatThumbnail
     },
     {
         name: 'woolly',
-        type: Type.Hat,
-        rarity: Rarity.Common,
+        type: Types.Hat,
+        rarity: Rarities.Common,
         image: woolly,
         thumbnail: woollyThumbnail
     },
     {
         name: 'gold',
-        type: Type.Potato,
-        rarity: Rarity.Legendary,
+        type: Types.Potato,
+        rarity: Rarities.Legendary,
         image: gold,
         thumbnail: null
     },
     {
         name: 'normal',
-        type: Type.Potato,
-        rarity: Rarity.None,
+        type: Types.Potato,
+        rarity: Rarities.None,
         image: normal,
         thumbnail: null
     },
     {
         name: 'spotty',
-        type: Type.Potato,
-        rarity: Rarity.VeryRare,
+        type: Types.Potato,
+        rarity: Rarities.VeryRare,
         image: spotty,
         thumbnail: null
     },
     {
         name: 'bejewelled',
-        type: Type.Shoes,
-        rarity: Rarity.Rare,
+        type: Types.Shoes,
+        rarity: Rarities.Rare,
         image: bejewelled,
         thumbnail: bejewelledThumbnail
     },
     {
         name: 'clown',
-        type: Type.Shoes,
-        rarity: Rarity.Rare,
+        type: Types.Shoes,
+        rarity: Rarities.Rare,
         image: clown,
         thumbnail: clownThumbnail
     },
     {
         name: 'neon dance',
-        type: Type.Shoes,
-        rarity: Rarity.Legendary,
+        type: Types.Shoes,
+        rarity: Rarities.Legendary,
         image: neonDance,
         thumbnail: neonDanceThumbnail
     },
     {
         name: 'plain brown',
-        type: Type.Shoes,
-        rarity: Rarity.Common,
+        type: Types.Shoes,
+        rarity: Rarities.Common,
         image: plainBrown,
         thumbnail: plainBrownThumbnail
     },
     {
         name: 'rainbow',
-        type: Type.Shoes,
-        rarity: Rarity.VeryRare,
+        type: Types.Shoes,
+        rarity: Rarities.VeryRare,
         image: rainbow,
         thumbnail: rainbowThumbnail
     },
     {
         name: 'shiny work',
-        type: Type.Shoes,
-        rarity: Rarity.Common,
+        type: Types.Shoes,
+        rarity: Rarities.Common,
         image: shinyWork,
         thumbnail: shinyWorkThumbnail
     },
     {
         name: 'mini potato',
-        type: Type.Toy,
-        rarity: Rarity.Rare,
+        type: Types.Toy,
+        rarity: Rarities.Rare,
         image: miniPotato,
         thumbnail: miniPotatoThumbnail
     },
     {
         name: 'nursery book',
-        type: Type.Toy,
-        rarity: Rarity.Rare,
+        type: Types.Toy,
+        rarity: Rarities.Rare,
         image: nurseryBook,
         thumbnail: nurseryBookThumbnail
     },
     {
         name: 'teddy bear',
-        type: Type.Toy,
-        rarity: Rarity.Rare,
+        type: Types.Toy,
+        rarity: Rarities.Rare,
         image: teddyBear,
         thumbnail: teddyBearThumbnail
     }

@@ -25,22 +25,6 @@ export function digIn() {
     </div>`)
 }
 
-export function inventory() {
-    return Utils.htmlToElement(
-    `<div id="inventory" class="hidden modal fixed top-16 left-1/4 h-3/5 w-1/2 border-8 rounded-3xl p-8 text-white">
-        <div class="flex flex-row">
-            <div class="basis-1/2">
-            
-            </div>
-            <div class="basis-1/2 relative">
-                <img id="potatoBackground" class="absolute top-0 left-0" />
-                <img src="/src/images/items/hat-woolly.png" class="absolute top-0 left-0" />
-            </div>
-        </div>
-        <button id="inventoryCloseBtn" class="mx-auto btn-game">Close</button>
-    </div>`)
-}
-
 export function info() {
     return Utils.htmlToElement(
     `<div id="info" class="hidden modal fixed top-16 left-1/4 h-3/5 w-1/2 border-8 rounded-3xl p-8 text-white">

@@ -37,8 +37,10 @@ export function init() {
             potato = Potato.availableItems.find(item => item.rarity === 'none')
         }
 
-        document.querySelector<HTMLDivElement>('#potatoBackground')?.setAttribute('src', potato.image)
-
+        if(potato) {
+            document.querySelector<HTMLDivElement>('#potatoBackground')?.setAttribute('src', potato.image)
+        }
+        
         document.querySelector<HTMLDivElement>('#inventory')!.classList.toggle('hidden')
     })
 

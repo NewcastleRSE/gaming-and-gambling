@@ -1,4 +1,4 @@
-import items from './../../images/items/'
+import { items } from './../../images/items/'
 
 function itemProbability() {
     var chances = [

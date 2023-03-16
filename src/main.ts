@@ -1,5 +1,6 @@
 import './style.css'
 import * as Potato from './games/potato'
+import { inventory } from './games/potato/inventory'
 import * as Utils from './utils'
 import * as Modals from './modals'
 import * as Menu from './menu'
@@ -28,7 +29,7 @@ Menu.init()
 
 document.querySelector<HTMLDivElement>('#app')!.append(Modals.welcome())
 document.querySelector<HTMLDivElement>('#app')!.append(Modals.digIn())
-document.querySelector<HTMLDivElement>('#app')!.append(Modals.inventory())
+document.querySelector<HTMLDivElement>('#app')!.append(inventory())
 document.querySelector<HTMLDivElement>('#app')!.append(Modals.info())
 document.querySelector<HTMLDivElement>('#app')!.append(Modals.odds())
 document.querySelector<HTMLDivElement>('#app')!.append(Modals.foundItem())
