@@ -27,12 +27,17 @@ document.querySelector<HTMLDivElement>('#app')!.innerHTML = `
 `
 Menu.init()
 
+const inventoryWrapper = document.createElement('div')
+inventoryWrapper.setAttribute('id', 'inventory')
+inventoryWrapper.classList.add('hidden', 'modal','fixed','top-16','left-1/4','w-1/2','border-8','rounded-3xl','p-8','text-white')
+
 document.querySelector<HTMLDivElement>('#app')!.append(Modals.welcome())
 document.querySelector<HTMLDivElement>('#app')!.append(Modals.digIn())
-document.querySelector<HTMLDivElement>('#app')!.append(inventory())
 document.querySelector<HTMLDivElement>('#app')!.append(Modals.info())
 document.querySelector<HTMLDivElement>('#app')!.append(Modals.odds())
 document.querySelector<HTMLDivElement>('#app')!.append(Modals.foundItem())
+
+document.querySelector<HTMLDivElement>('#app')!.append(inventoryWrapper)
 
 const elements = {
   stage: document.querySelector<HTMLDivElement>('#stage'),
@@ -71,10 +76,6 @@ elements.digIn!.querySelector<HTMLDivElement>('#digInBtn')!.addEventListener('cl
   elements.menu!.classList.toggle('hidden')
 })
 
-elements.inventory!.querySelector<HTMLDivElement>('#inventoryCloseBtn')!.addEventListener('click', () => {
-  elements.inventory!.classList.toggle('hidden')
-})
-
 elements.info!.querySelector<HTMLDivElement>('#closeInfoBtn')!.addEventListener('click', () => {
   elements.info!.classList.toggle('hidden')
 })
@@ -85,5 +86,4 @@ elements.odds!.querySelector<HTMLDivElement>('#closeOddsBtn')!.addEventListener(
 
 elements.foundItem!.querySelector<HTMLDivElement>('#foundItemBtn')!.addEventListener('click', () => {
   elements.foundItem!.classList.toggle('hidden')
-  console.log(Potato.availableItems)
 })

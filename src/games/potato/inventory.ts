@@ -3,6 +3,7 @@ import { Rarities } from '../../images/items'
 import { availableItems } from './../../games/potato'
 
 export function inventory() {
+    console.log(availableItems.filter((item) => item.found))
 
     const rarityOrder = Object.values(Rarities);
     
@@ -14,18 +15,31 @@ export function inventory() {
         legendaryItems = '<h2>Legendary</h2><div class="flex flex-wrap gap-4 mb-4">'
 
     availableItems.forEach(item => {
+
+        let itemHTML = `<div class="w-14 h-14 text-center align-middle item ${item.rarity} ${item.type}">`
+
+        if(item.found) {
+            console.log(item.name)
+            itemHTML += `<img src="${item.image}" alt="${item.name}" />`
+        }
+        else {
+            itemHTML += `<span>?</span>`
+        }
+                        
+        itemHTML += `</div>`
+
         switch(item.rarity) {
             case 'common':
-                commonItems += `<div class="w-14 h-14 item ${item.rarity}">?</div>`
+                commonItems += itemHTML
                 break;
             case 'rare':
-                rareItems += `<div class="w-14 h-14 item ${item.rarity}">?</div>`
+                rareItems += itemHTML                
                 break;
             case 'veryRare':
-                veryRareItems += `<div class="w-14 h-14 item ${item.rarity}">?</div>`
+                veryRareItems += itemHTML
                 break;
             case 'legendary':
-                legendaryItems += `<div class="w-14 h-14 item ${item.rarity}">?</div>`
+                legendaryItems += itemHTML
                 break;
         }                
     })
@@ -35,17 +49,16 @@ export function inventory() {
     veryRareItems += '</div>'
     legendaryItems += '</div>'
 
+    const inventoryWrapper = document.querySelector<HTMLDivElement>('#inventory')
     
-
-    return Utils.htmlToElement(
-    `<div id="inventory" class="hidden modal fixed top-16 left-1/4 w-1/2 border-8 rounded-3xl p-8 text-white">
-        <div class="flex flex-row">
+    inventoryWrapper!.innerHTML =  
+        `<div class="flex flex-row">
             <div class="w-1/2">
                 <div class="flex gap-4 mb-4">
-                    <button id="homeBtn" class="rounded-4 w-16 h-16 background-cover" style="background-image: url('/src/images/buttons/home.png')">
-                    <button id="gameBtn" class="rounded-4 w-16 h-16 background-cover" style="background-image: url('/src/images/buttons/shovel.png')">
-                    <button id="inventoryBtn" class="rounded-4 w-16 h-16 background-cover" style="background-image: url('/src/images/buttons/case.png')">
-                    <button id="infoBtn" class="rounded-4 w-16 h-16 background-cover" style="background-image: url('/src/images/buttons/info.png')">
+                    <button id="allItems" class="rounded-4 w-16 h-16">All</button>
+                    <button id="hatItems" class="rounded-4 w-16 h-16">Hats</button>
+                    <button id="shoeItems" class="rounded-4 w-16 h-16">Shoes</button>
+                    <button id="accessoriesItems" class="rounded-4 w-16 h-16">Accessories</button>
                 </div>
                 <div id="items">
                     ${commonItems}
@@ -59,6 +72,56 @@ export function inventory() {
                 <img src="/src/images/items/hat-woolly.png" class="absolute top-0 left-0" />
             </div>
         </div>
-        <button id="inventoryCloseBtn" class="mx-auto btn-game">Close</button>
-    </div>`)
+        <button id="inventoryCloseBtn" class="mx-auto btn-game">Close</button>`
+
+    inventoryWrapper!.querySelector<HTMLDivElement>('#allItems')!.addEventListener('click', () => {
+        var items = inventoryWrapper!.getElementsByClassName('item')
+
+        for (var i = 0; i < items.length; i++) {
+            items[i].classList.remove('hidden')
+        }
+    })
+
+    inventoryWrapper!.querySelector<HTMLDivElement>('#hatItems')!.addEventListener('click', () => {
+        var items = inventoryWrapper!.getElementsByClassName('item')
+
+        for (var i = 0; i < items.length; i++) {
+            if(items[i].classList.contains('hat')){
+                items[i].classList.remove('hidden')
+            }
+            else {
+                items[i].classList.add('hidden')
+            }
+        }
+    })
+
+    inventoryWrapper!.querySelector<HTMLDivElement>('#shoeItems')!.addEventListener('click', () => {
+        var items = inventoryWrapper!.getElementsByClassName('item')
+
+        for (var i = 0; i < items.length; i++) {
+            if(items[i].classList.contains('shoes')){
+                items[i].classList.remove('hidden')
+            }
+            else {
+                items[i].classList.add('hidden')
+            }
+        }
+    })
+
+    inventoryWrapper!.querySelector<HTMLDivElement>('#accessoriesItems')!.addEventListener('click', () => {
+        var items = inventoryWrapper!.getElementsByClassName('item')
+
+        for (var i = 0; i < items.length; i++) {
+            if(items[i].classList.contains('accessory')){
+                items[i].classList.remove('hidden')
+            }
+            else {
+                items[i].classList.add('hidden')
+            }
+        }
+    })
+
+    inventoryWrapper!.querySelector<HTMLDivElement>('#inventoryCloseBtn')!.addEventListener('click', () => {
+        inventoryWrapper!.classList.toggle('hidden')
+    })
 }

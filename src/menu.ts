@@ -1,9 +1,11 @@
 import home from './images/buttons/home.png'
 import game from './images/buttons/shovel.png'
-import inventory from './images/buttons/case.png'
+import inventoryBtn from './images/buttons/case.png'
 import info from './images/buttons/info.png'
 import sound from './images/buttons/speaker.png'
 import odds from './images/buttons/tree.png'
+
+import { inventory } from './games/potato/inventory'
 
 import * as Potato from './games/potato'
 
@@ -12,7 +14,7 @@ export function init() {
     <div class="grid place-items-center gap-4 grid-cols-6">
         <button id="homeBtn" class="rounded-4 w-16 h-16 background-cover" style="background-image: url('${home}')" />
         <button id="gameBtn" class="rounded-4 w-16 h-16 background-cover" style="background-image: url('${game}')" />
-        <button id="inventoryBtn" class="rounded-4 w-16 h-16 background-cover" style="background-image: url('${inventory}')" />
+        <button id="inventoryBtn" class="rounded-4 w-16 h-16 background-cover" style="background-image: url('${inventoryBtn}')" />
         <button id="infoBtn" class="rounded-4 w-16 h-16 background-cover" style="background-image: url('${info}')" />
         <button id="soundBtn" class="rounded-4 w-16 h-16 background-cover" style="background-image: url('${sound}')" />
         <button id="oddsBtn" class="rounded-4 w-16 h-16 background-cover" style="background-image: url('${odds}')" />
@@ -29,7 +31,7 @@ export function init() {
     })
 
     menu!.querySelector<HTMLDivElement>('#inventoryBtn')!.addEventListener('click', () => {
-        console.log(Potato.availableItems)
+        inventory()
 
         let potato = Potato.availableItems.find(item => item.type === 'potato' && item.selected)
 
