@@ -12,6 +12,7 @@ export function inventory() {
     let selectedItems = {
         potato: null,
         hat: null,
+        accessory: null,
         toy: null,
         shoes: null
     }
@@ -21,7 +22,7 @@ export function inventory() {
         let itemHTML = `<div class="w-14 h-14 text-center align-middle item ${item.rarity} ${item.type}">`
 
         if(item.found) {
-            itemHTML += `<img class="thumbnail pointer" src="${item.thumbnail}" alt="${item.name}" />`
+            itemHTML += `<img class="thumbnail cursor-pointer" src="${item.thumbnail}" alt="${item.name}" />`
         }
         else {
             itemHTML += `<span>?</span>`
@@ -63,6 +64,7 @@ export function inventory() {
                     <button id="allItems" class="rounded-4 w-16 h-16">All</button>
                     <button id="hatItems" class="rounded-4 w-16 h-16">Hats</button>
                     <button id="shoeItems" class="rounded-4 w-16 h-16">Shoes</button>
+                    <button id="toyItems" class="rounded-4 w-16 h-16">Toys</button>
                     <button id="accessoriesItems" class="rounded-4 w-16 h-16">Accessories</button>
                 </div>
                 <div id="items">
@@ -77,6 +79,7 @@ export function inventory() {
                 <img id="selectedHat" class="absolute top-0 left-0" />
                 <img id="selectedAccessory" class="absolute top-0 left-0" />
                 <img id="selectedShoes" class="absolute top-0 left-0" />
+                <img id="selectedToy" class="absolute top-0 left-0" />
             </div>
         </div>
         <button id="inventoryCloseBtn" class="mx-auto btn-game">Close</button>`
@@ -87,8 +90,9 @@ export function inventory() {
 
     selectedItems.potato ? showCase!.querySelector<HTMLDivElement>('#selectedPotato')?.setAttribute('src', selectedItems.potato?.image) : null
     selectedItems.hat ? showCase!.querySelector<HTMLDivElement>('#selectedHat')?.setAttribute('src', selectedItems.hat?.image) : null
-    selectedItems.toy ? showCase!.querySelector<HTMLDivElement>('#selectedAccessory')?.setAttribute('src', selectedItems.toy?.image) : null
+    selectedItems.accessory ? showCase!.querySelector<HTMLDivElement>('#selectedAccessory')?.setAttribute('src', selectedItems.toy?.image) : null
     selectedItems.shoes ? showCase!.querySelector<HTMLDivElement>('#selectedShoes')?.setAttribute('src', selectedItems.shoes?.image) : null
+    selectedItems.toy ? showCase!.querySelector<HTMLDivElement>('#selectedShoes')?.setAttribute('src', selectedItems.toy?.image) : null
 
     for (let i = 0; i < thumbnails.length; i++) {
         thumbnails[i].addEventListener('click', (event) => {
@@ -102,10 +106,13 @@ export function inventory() {
                     showCase!.querySelector<HTMLDivElement>('#selectedHat')?.setAttribute('src', item.image)
                     break
                 case 'toy':
-                    showCase!.querySelector<HTMLDivElement>('#selectedAccessory')?.setAttribute('src', item.image)
+                    showCase!.querySelector<HTMLDivElement>('#selectedToy')?.setAttribute('src', item.image)
                     break
                 case 'shoes':
                     showCase!.querySelector<HTMLDivElement>('#selectedShoes')?.setAttribute('src', item.image)
+                    break
+                case 'accessory':
+                    showCase!.querySelector<HTMLDivElement>('#selectedAccessory')?.setAttribute('src', item.image)
                     break
             }
         })
@@ -150,6 +157,19 @@ export function inventory() {
 
         for (let i = 0; i < items.length; i++) {
             if(items[i].classList.contains('accessory')){
+                items[i].classList.remove('hidden')
+            }
+            else {
+                items[i].classList.add('hidden')
+            }
+        }
+    })
+
+    inventoryWrapper!.querySelector<HTMLDivElement>('#toyItems')!.addEventListener('click', () => {
+        let items = inventoryWrapper!.getElementsByClassName('item')
+
+        for (let i = 0; i < items.length; i++) {
+            if(items[i].classList.contains('toy')){
                 items[i].classList.remove('hidden')
             }
             else {

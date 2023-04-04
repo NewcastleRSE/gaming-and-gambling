@@ -186,21 +186,21 @@ export const items = [
         type: Types.Potato,
         rarity: Rarities.Legendary,
         image: gold,
-        thumbnail: null
+        thumbnail: gold
     },
     {
         name: 'normal',
         type: Types.Potato,
         rarity: Rarities.None,
         image: normal,
-        thumbnail: null
+        thumbnail: normal
     },
     {
         name: 'spotty',
         type: Types.Potato,
         rarity: Rarities.VeryRare,
         image: spotty,
-        thumbnail: null
+        thumbnail: spotty
     },
     {
         name: 'bejewelled',
