@@ -13,6 +13,9 @@ function itemProbability() {
 
 const availableItems = items.map(item => ({ ...item, selected: false, found: false }))
 
+const defaultPotatoIndex = availableItems.findIndex((item) => item.name === 'normal')
+availableItems[defaultPotatoIndex].selected = true
+
 const itemsRemaining = {
     common: availableItems.filter(item => item && item.rarity === 'common'),
     rare: availableItems.filter(item => item && item.rarity === 'rare'),

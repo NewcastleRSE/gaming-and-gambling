@@ -3,21 +3,25 @@
 import { availableItems, selectItem } from './../../games/potato'
 
 export function inventory() {
-    // const rarityOrder = Object.values(Rarities);
-    
-    // availableItems.sort((a, b) => rarityOrder.indexOf(a.rarity) - rarityOrder.indexOf(b.rarity))
 
     let commonItems = '<h2>Common</h2><div class="flex flex-wrap gap-4 mb-4">',
         rareItems = '<h2>Rare</h2><div class="flex flex-wrap gap-4 mb-4">',
         veryRareItems = '<h2>Very Rare</h2><div class="flex flex-wrap gap-4 mb-4">',
         legendaryItems = '<h2>Legendary</h2><div class="flex flex-wrap gap-4 mb-4">'
 
+    let selectedItems = {
+        potato: null,
+        hat: null,
+        toy: null,
+        shoes: null
+    }
+
     availableItems.forEach(item => {
 
         let itemHTML = `<div class="w-14 h-14 text-center align-middle item ${item.rarity} ${item.type}">`
 
         if(item.found) {
-            itemHTML += `<img class="thumbnail" src="${item.thumbnail}" alt="${item.name}" />`
+            itemHTML += `<img class="thumbnail pointer" src="${item.thumbnail}" alt="${item.name}" />`
         }
         else {
             itemHTML += `<span>?</span>`
@@ -38,7 +42,11 @@ export function inventory() {
             case 'legendary':
                 legendaryItems += itemHTML
                 break;
-        }                
+        }
+        
+        if(item.selected) {
+            selectedItems[item.type] = item
+        }
     })
 
     commonItems += '</div>'
@@ -73,15 +81,18 @@ export function inventory() {
         </div>
         <button id="inventoryCloseBtn" class="mx-auto btn-game">Close</button>`
 
-    var thumbnails = inventoryWrapper!.getElementsByClassName('thumbnail')
+    let thumbnails = inventoryWrapper!.getElementsByClassName('thumbnail')
 
     const showCase = document.querySelector<HTMLDivElement>('#potato-showcase')
 
-    for (var i = 0; i < thumbnails.length; i++) {
+    selectedItems.potato ? showCase!.querySelector<HTMLDivElement>('#selectedPotato')?.setAttribute('src', selectedItems.potato?.image) : null
+    selectedItems.hat ? showCase!.querySelector<HTMLDivElement>('#selectedHat')?.setAttribute('src', selectedItems.hat?.image) : null
+    selectedItems.toy ? showCase!.querySelector<HTMLDivElement>('#selectedAccessory')?.setAttribute('src', selectedItems.toy?.image) : null
+    selectedItems.shoes ? showCase!.querySelector<HTMLDivElement>('#selectedShoes')?.setAttribute('src', selectedItems.shoes?.image) : null
+
+    for (let i = 0; i < thumbnails.length; i++) {
         thumbnails[i].addEventListener('click', (event) => {
             const item = selectItem(event.target!.alt)
-
-            console.log(item.type)
 
             switch(item.type) {
                 case 'potato':
@@ -90,7 +101,7 @@ export function inventory() {
                 case 'hat':
                     showCase!.querySelector<HTMLDivElement>('#selectedHat')?.setAttribute('src', item.image)
                     break
-                case 'accessory':
+                case 'toy':
                     showCase!.querySelector<HTMLDivElement>('#selectedAccessory')?.setAttribute('src', item.image)
                     break
                 case 'shoes':
@@ -101,17 +112,17 @@ export function inventory() {
     }
 
     inventoryWrapper!.querySelector<HTMLDivElement>('#allItems')!.addEventListener('click', () => {
-        var items = inventoryWrapper!.getElementsByClassName('item')
+        let items = inventoryWrapper!.getElementsByClassName('item')
 
-        for (var i = 0; i < items.length; i++) {
+        for (let i = 0; i < items.length; i++) {
             items[i].classList.remove('hidden')
         }
     })
 
     inventoryWrapper!.querySelector<HTMLDivElement>('#hatItems')!.addEventListener('click', () => {
-        var items = inventoryWrapper!.getElementsByClassName('item')
+        let items = inventoryWrapper!.getElementsByClassName('item')
 
-        for (var i = 0; i < items.length; i++) {
+        for (let i = 0; i < items.length; i++) {
             if(items[i].classList.contains('hat')){
                 items[i].classList.remove('hidden')
             }
@@ -122,9 +133,9 @@ export function inventory() {
     })
 
     inventoryWrapper!.querySelector<HTMLDivElement>('#shoeItems')!.addEventListener('click', () => {
-        var items = inventoryWrapper!.getElementsByClassName('item')
+        let items = inventoryWrapper!.getElementsByClassName('item')
 
-        for (var i = 0; i < items.length; i++) {
+        for (let i = 0; i < items.length; i++) {
             if(items[i].classList.contains('shoes')){
                 items[i].classList.remove('hidden')
             }
@@ -135,9 +146,9 @@ export function inventory() {
     })
 
     inventoryWrapper!.querySelector<HTMLDivElement>('#accessoriesItems')!.addEventListener('click', () => {
-        var items = inventoryWrapper!.getElementsByClassName('item')
+        let items = inventoryWrapper!.getElementsByClassName('item')
 
-        for (var i = 0; i < items.length; i++) {
+        for (let i = 0; i < items.length; i++) {
             if(items[i].classList.contains('accessory')){
                 items[i].classList.remove('hidden')
             }
