@@ -1,13 +1,11 @@
-import * as Utils from './../../utils'
-import { Rarities } from '../../images/items'
-import { availableItems } from './../../games/potato'
+// import * as Utils from './../../utils'
+// import { Rarities } from '../../images/items'
+import { availableItems, selectItem } from './../../games/potato'
 
 export function inventory() {
-    console.log(availableItems.filter((item) => item.found))
-
-    const rarityOrder = Object.values(Rarities);
+    // const rarityOrder = Object.values(Rarities);
     
-    availableItems.sort((a, b) => rarityOrder.indexOf(a.rarity) - rarityOrder.indexOf(b.rarity))
+    // availableItems.sort((a, b) => rarityOrder.indexOf(a.rarity) - rarityOrder.indexOf(b.rarity))
 
     let commonItems = '<h2>Common</h2><div class="flex flex-wrap gap-4 mb-4">',
         rareItems = '<h2>Rare</h2><div class="flex flex-wrap gap-4 mb-4">',
@@ -19,8 +17,7 @@ export function inventory() {
         let itemHTML = `<div class="w-14 h-14 text-center align-middle item ${item.rarity} ${item.type}">`
 
         if(item.found) {
-            console.log(item.name)
-            itemHTML += `<img src="${item.image}" alt="${item.name}" />`
+            itemHTML += `<img class="thumbnail" src="${item.thumbnail}" alt="${item.name}" />`
         }
         else {
             itemHTML += `<span>?</span>`
@@ -67,12 +64,41 @@ export function inventory() {
                     ${legendaryItems}
                 </div>
             </div>
-            <div class="w-1/2 relative">
-                <img id="potatoBackground" class="absolute top-0 left-0" />
-                <img src="/src/images/items/hat-woolly.png" class="absolute top-0 left-0" />
+            <div class="w-1/2 relative" id="potato-showcase">
+                <img id="selectedPotato" class="absolute top-0 left-0" />
+                <img id="selectedHat" class="absolute top-0 left-0" />
+                <img id="selectedAccessory" class="absolute top-0 left-0" />
+                <img id="selectedShoes" class="absolute top-0 left-0" />
             </div>
         </div>
         <button id="inventoryCloseBtn" class="mx-auto btn-game">Close</button>`
+
+    var thumbnails = inventoryWrapper!.getElementsByClassName('thumbnail')
+
+    const showCase = document.querySelector<HTMLDivElement>('#potato-showcase')
+
+    for (var i = 0; i < thumbnails.length; i++) {
+        thumbnails[i].addEventListener('click', (event) => {
+            const item = selectItem(event.target!.alt)
+
+            console.log(item.type)
+
+            switch(item.type) {
+                case 'potato':
+                    showCase!.querySelector<HTMLDivElement>('#selectedPotato')?.setAttribute('src', item.image)
+                    break
+                case 'hat':
+                    showCase!.querySelector<HTMLDivElement>('#selectedHat')?.setAttribute('src', item.image)
+                    break
+                case 'accessory':
+                    showCase!.querySelector<HTMLDivElement>('#selectedAccessory')?.setAttribute('src', item.image)
+                    break
+                case 'shoes':
+                    showCase!.querySelector<HTMLDivElement>('#selectedShoes')?.setAttribute('src', item.image)
+                    break
+            }
+        })
+    }
 
     inventoryWrapper!.querySelector<HTMLDivElement>('#allItems')!.addEventListener('click', () => {
         var items = inventoryWrapper!.getElementsByClassName('item')

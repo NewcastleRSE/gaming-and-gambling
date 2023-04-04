@@ -59,7 +59,7 @@ export function odds() {
 export function foundItem() {
     return Utils.htmlToElement(
     `<div id="foundItem" class="hidden modal fixed top-16 left-1/4 w-1/2 border-8 rounded-3xl p-8 text-white">
-        <p class="mb-2 text-center">You found the <span id="foundItemName"></span></p>
+        <p class="mb-2 text-center lowercase">You found the <span id="foundItemName"></span></p>
         <img id="foundItemImage" class="mx-auto my-5 w-24" />
         <button id="foundItemBtn" class="mx-auto btn-game">Continue</button>
     </div>`)

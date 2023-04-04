@@ -39,7 +39,9 @@ export function dig(x: number, y: number) {
             
             availableItems[availableItems.indexOf(find)].found = true
 
-            document.querySelector<HTMLDivElement>('#foundItem #foundItemName')!.innerText = `${find.name} ${find.type}`
+            const foundName = find.name.replace(/([A-Z]+)/g, " $1").replace(/([A-Z][a-z])/g, " $1")
+
+            document.querySelector<HTMLDivElement>('#foundItem #foundItemName')!.innerText = `${foundName} ${find.type}`
             document.querySelector<HTMLDivElement>('#foundItem #foundItemImage')!.setAttribute('alt', find.name)
             document.querySelector<HTMLDivElement>('#foundItem #foundItemImage')!.setAttribute('src', find.thumbnail)
             
@@ -54,4 +56,16 @@ export function dig(x: number, y: number) {
             })
         }
     }, 500)
+}
+
+export function selectItem(name: string) {
+    const selectedIndex = availableItems.findIndex((item) => item.name === name)
+
+    for(let i = 0; i < availableItems.length; i++) {
+        if(availableItems[i].type === availableItems[selectedIndex]?.type)
+        availableItems[i].selected = false
+    }
+
+    availableItems[selectedIndex].selected = true
+    return availableItems[selectedIndex]
 }

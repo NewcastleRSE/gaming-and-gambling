@@ -77,7 +77,7 @@ export const items = [
         thumbnail: balloonThumbnail
     },
     {
-        name: 'bow tie',
+        name: 'bowTie',
         type: Types.Accessory,
         rarity: Rarities.VeryRare,
         image: bowTie,
@@ -91,7 +91,7 @@ export const items = [
         thumbnail: burgerThumbnail
     },
     {
-        name: 'coffee cup',
+        name: 'coffeeCup',
         type: Types.Accessory,
         rarity: Rarities.Rare,
         image: coffeeCup,
@@ -133,7 +133,7 @@ export const items = [
         thumbnail: baseballThumbnail
     },
     {
-        name: 'bunny ears',
+        name: 'bunnyEars',
         type: Types.Hat,
         rarity: Rarities.VeryRare,
         image: bunnyEars,
@@ -147,21 +147,21 @@ export const items = [
         thumbnail: headbandThumbnail
     },
     {
-        name: 'plain red',
+        name: 'plainRed',
         type: Types.Hat,
         rarity: Rarities.Common,
         image: plainRed,
         thumbnail: plainRedThumbnail
     },
     {
-        name: 'sun visor',
+        name: 'sunVisor',
         type: Types.Hat,
         rarity: Rarities.Rare,
         image: sunVisor,
         thumbnail: sunVisorThumbnail
     },
     {
-        name: 'tin can',
+        name: 'tinCan',
         type: Types.Hat,
         rarity: Rarities.Legendary,
         image: tinCan,
@@ -217,14 +217,14 @@ export const items = [
         thumbnail: clownThumbnail
     },
     {
-        name: 'neon dance',
+        name: 'neonDance',
         type: Types.Shoes,
         rarity: Rarities.Legendary,
         image: neonDance,
         thumbnail: neonDanceThumbnail
     },
     {
-        name: 'plain brown',
+        name: 'plainBrown',
         type: Types.Shoes,
         rarity: Rarities.Common,
         image: plainBrown,
@@ -238,28 +238,28 @@ export const items = [
         thumbnail: rainbowThumbnail
     },
     {
-        name: 'shiny work',
+        name: 'shinyWork',
         type: Types.Shoes,
         rarity: Rarities.Common,
         image: shinyWork,
         thumbnail: shinyWorkThumbnail
     },
     {
-        name: 'mini potato',
+        name: 'miniPotato',
         type: Types.Toy,
         rarity: Rarities.Rare,
         image: miniPotato,
         thumbnail: miniPotatoThumbnail
     },
     {
-        name: 'nursery book',
+        name: 'nurseryBook',
         type: Types.Toy,
         rarity: Rarities.Rare,
         image: nurseryBook,
         thumbnail: nurseryBookThumbnail
     },
     {
-        name: 'teddy bear',
+        name: 'teddyBear',
         type: Types.Toy,
         rarity: Rarities.Rare,
         image: teddyBear,
