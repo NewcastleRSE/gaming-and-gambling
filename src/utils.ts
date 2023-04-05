@@ -12,5 +12,5 @@ export function htmlToElement(html: string) {
   var template = document.createElement('template')
   html = html.trim()
   template.innerHTML = html
-  return template.content.firstChild
+  return <HTMLElement>template.content.firstChild
 }
