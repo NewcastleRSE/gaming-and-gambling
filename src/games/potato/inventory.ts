@@ -4,10 +4,10 @@ import { availableItems, selectItem } from './../../games/potato'
 
 export function inventory() {
 
-    let commonItems = '<h2>Common</h2><div class="flex flex-wrap gap-4 mb-4">',
-        rareItems = '<h2>Rare</h2><div class="flex flex-wrap gap-4 mb-4">',
-        veryRareItems = '<h2>Very Rare</h2><div class="flex flex-wrap gap-4 mb-4">',
-        legendaryItems = '<h2>Legendary</h2><div class="flex flex-wrap gap-4 mb-4">'
+    let commonItems = '<h2 id="commonLabel">Common</h2><div class="flex flex-wrap gap-4 mb-4">',
+        rareItems = '<h2 id="rareLabel">Rare</h2><div class="flex flex-wrap gap-4 mb-4">',
+        veryRareItems = '<h2 id="veryRareLabel">Very Rare</h2><div class="flex flex-wrap gap-4 mb-4">',
+        legendaryItems = '<h2 id="legendaryLabel">Legendary</h2><div class="flex flex-wrap gap-4 mb-4">'
 
     let selectedItems = {
         potato: null,
@@ -120,65 +120,52 @@ export function inventory() {
 
     inventoryWrapper!.querySelector<HTMLDivElement>('#allItems')!.addEventListener('click', () => {
         let items = inventoryWrapper!.getElementsByClassName('item')
-
-        for (let i = 0; i < items.length; i++) {
-            items[i].classList.remove('hidden')
-        }
+        toggleItemType(items, 'item')
     })
 
     inventoryWrapper!.querySelector<HTMLDivElement>('#hatItems')!.addEventListener('click', () => {
         let items = inventoryWrapper!.getElementsByClassName('item')
-
-        for (let i = 0; i < items.length; i++) {
-            if(items[i].classList.contains('hat')){
-                items[i].classList.remove('hidden')
-            }
-            else {
-                items[i].classList.add('hidden')
-            }
-        }
+        toggleItemType(items, 'hat')
     })
 
     inventoryWrapper!.querySelector<HTMLDivElement>('#shoeItems')!.addEventListener('click', () => {
         let items = inventoryWrapper!.getElementsByClassName('item')
-
-        for (let i = 0; i < items.length; i++) {
-            if(items[i].classList.contains('shoes')){
-                items[i].classList.remove('hidden')
-            }
-            else {
-                items[i].classList.add('hidden')
-            }
-        }
+        toggleItemType(items, 'shoes')
     })
 
     inventoryWrapper!.querySelector<HTMLDivElement>('#accessoriesItems')!.addEventListener('click', () => {
         let items = inventoryWrapper!.getElementsByClassName('item')
-
-        for (let i = 0; i < items.length; i++) {
-            if(items[i].classList.contains('accessory')){
-                items[i].classList.remove('hidden')
-            }
-            else {
-                items[i].classList.add('hidden')
-            }
-        }
+        toggleItemType(items, 'accessory')
     })
 
     inventoryWrapper!.querySelector<HTMLDivElement>('#toyItems')!.addEventListener('click', () => {
         let items = inventoryWrapper!.getElementsByClassName('item')
-
-        for (let i = 0; i < items.length; i++) {
-            if(items[i].classList.contains('toy')){
-                items[i].classList.remove('hidden')
-            }
-            else {
-                items[i].classList.add('hidden')
-            }
-        }
+        toggleItemType(items, 'toy')
     })
 
     inventoryWrapper!.querySelector<HTMLDivElement>('#inventoryCloseBtn')!.addEventListener('click', () => {
         inventoryWrapper!.classList.toggle('hidden')
     })
+}
+
+function toggleItemType(items: HTMLCollectionOf<Element>, type: string) {
+
+    for (let i = 0; i < items.length; i++) {
+        if(items[i].classList.contains(type)){
+            items[i].classList.remove('hidden')
+        }
+        else {
+            items[i].classList.add('hidden')
+        }
+    }
+
+    const commonCount = document.querySelectorAll('.common:not(.hidden)')!.length,
+          rareCount = document.querySelectorAll('.rare:not(.hidden)')!.length,
+          veryRareCount = document.querySelectorAll('.veryRare:not(.hidden)')!.length,
+          legendaryCount = document.querySelectorAll('.legendary:not(.hidden)')!.length
+
+    commonCount === 0 ? document.querySelector('#commonLabel')!.classList.add('hidden') : document.querySelector('#commonLabel')!.classList.remove('hidden')
+    rareCount === 0 ? document.querySelector('#rareLabel')!.classList.add('hidden') : document.querySelector('#rareLabel')!.classList.remove('hidden')
+    veryRareCount === 0 ? document.querySelector('#veryRareLabel')!.classList.add('hidden') : document.querySelector('#veryRareLabel')!.classList.remove('hidden')
+    legendaryCount === 0 ? document.querySelector('#legendaryLabel')!.classList.add('hidden') : document.querySelector('#legendaryLabel')!.classList.remove('hidden')
 }
