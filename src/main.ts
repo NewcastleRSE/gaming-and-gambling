@@ -1,6 +1,5 @@
 import './style.css'
 import * as Potato from './games/potato'
-import { inventory } from './games/potato/inventory'
 import * as Utils from './utils'
 import * as Modals from './modals'
 import * as Menu from './menu'
@@ -9,7 +8,7 @@ import name from './images/name.png'
 import dig from './images/dig.gif'
 
 document.querySelector<HTMLDivElement>('#app')!.innerHTML = `
-  <div id="wrapper" class="drop-shadow-lg aspect-video relative h-full">
+  <div id="wrapper" class="drop-shadow-lg relative h-screen">
     <embed id="stage" class="absolute -z-50" src="${background}"></embed>
     <img id="dig-animation" class="hidden fixed" src="${dig}" alt="dig" />
     <div id="start" class="flex flex-col grid place-items-center">
@@ -20,8 +19,15 @@ document.querySelector<HTMLDivElement>('#app')!.innerHTML = `
       </div>
       <button id="playBtn" class="mx-auto btn-game -mt-36">Play</button>
     </div> 
-    <div id="menu" class="hidden w-1/2 mx-auto pt-4">
-      
+    <div id="menu" class="hidden w-1/2 mx-auto pt-4"></div>
+    <div class="absolute" style="left: 55%; top: 35%">
+      <div id="potato" class="relative hidden" style="width: 400px; height: 400px">
+        <img id="digPotato" class="absolute top-0 left-0" />
+        <img id="digHat" class="absolute top-0 left-0" />
+        <img id="digAccessory" class="absolute top-0 left-0" />
+        <img id="digShoes" class="absolute top-0 left-0" />
+        <img id="digToy" class="absolute top-0 left-0" />
+      </div>
     </div>
   </div>
 `
@@ -49,6 +55,7 @@ const elements = {
   info: document.querySelector<HTMLDivElement>('#info'),
   odds: document.querySelector<HTMLDivElement>('#odds'),
   foundItem: document.querySelector<HTMLDivElement>('#foundItem'),
+  potato: document.querySelector<HTMLDivElement>('#potato')
 }
 
 elements.stage!.addEventListener('load', () => {
@@ -74,6 +81,19 @@ elements.welcome!.querySelector<HTMLDivElement>('#continueBtn')!.addEventListene
 elements.digIn!.querySelector<HTMLDivElement>('#digInBtn')!.addEventListener('click', () => {
   elements.digIn!.classList.toggle('hidden')
   elements.menu!.classList.toggle('hidden')
+  elements.potato!.classList.toggle('hidden')
+
+  const selectedPotato = Potato.availableItems.find((item) => item.type === 'potato' && item.selected),
+        selectedHat = Potato.availableItems.find((item) => item.type === 'hat' && item.selected),
+        selectedShoes = Potato.availableItems.find((item) => item.type === 'shoes' && item.selected),
+        selectedAccessory = Potato.availableItems.find((item) => item.type === 'accessory' && item.selected),
+        selectedToy = Potato.availableItems.find((item) => item.type === 'toy' && item.selected)
+
+  selectedPotato ? elements.potato!.querySelector<HTMLDivElement>('#digPotato')?.setAttribute('src', selectedPotato.image) : null
+  selectedHat ? elements.potato!.querySelector<HTMLDivElement>('#digHat')?.setAttribute('src', selectedHat.image) : null
+  selectedShoes ? elements.potato!.querySelector<HTMLDivElement>('#digShoes')?.setAttribute('src', selectedShoes.image) : null
+  selectedAccessory ? elements.potato!.querySelector<HTMLDivElement>('#digAccessory')?.setAttribute('src', selectedAccessory.image) : null
+  selectedToy ? elements.potato!.querySelector<HTMLDivElement>('#digToy')?.setAttribute('src', selectedToy.image) : null
 })
 
 elements.info!.querySelector<HTMLDivElement>('#closeInfoBtn')!.addEventListener('click', () => {
