@@ -16,12 +16,21 @@ const availableItems = items.map(item => ({ ...item, selected: false, found: fal
 const defaultPotatoIndex = availableItems.findIndex((item) => item.name === 'normal')
 availableItems[defaultPotatoIndex].selected = true
 
-const itemsRemaining = {
+interface ItemsRemaining {
+    common: any;
+    rare: any;
+    veryRare: any;
+    legendary: any;
+}
+
+const itemsRemaining: ItemsRemaining = {
     common: availableItems.filter(item => item && item.rarity === 'common'),
     rare: availableItems.filter(item => item && item.rarity === 'rare'),
     veryRare: availableItems.filter(item => item && item.rarity === 'veryRare'),
     legendary: availableItems.filter(item => item && item.rarity === 'legendary')
 }
+
+type ObjectKey = keyof typeof itemsRemaining
 
 export { availableItems }
 
@@ -35,7 +44,7 @@ export function dig(x: number, y: number) {
     setTimeout(() => { 
         digAnimation!.classList.toggle('hidden')
 
-        const foundItemRarity = itemProbability()
+        const foundItemRarity: ObjectKey = itemProbability()
 
         if(itemsRemaining[foundItemRarity].length) {
             const find = itemsRemaining[foundItemRarity].pop()

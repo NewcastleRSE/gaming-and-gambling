@@ -9,13 +9,23 @@ export function inventory() {
         veryRareItems = '<h2 id="veryRareLabel">Very Rare</h2><div class="flex flex-wrap gap-4 mb-4">',
         legendaryItems = '<h2 id="legendaryLabel">Legendary</h2><div class="flex flex-wrap gap-4 mb-4">'
 
-    let selectedItems = {
+    interface SelectedItems {
+        potato: any;
+        hat: any;
+        accessory: any;
+        toy: any;
+        shoes: any;
+    }
+
+    let selectedItems: SelectedItems = {
         potato: null,
         hat: null,
         accessory: null,
         toy: null,
         shoes: null
     }
+
+    // type ObjectKey = keyof typeof selectedItems
 
     availableItems.forEach(item => {
 
@@ -96,7 +106,7 @@ export function inventory() {
 
     for (let i = 0; i < thumbnails.length; i++) {
         thumbnails[i].addEventListener('click', (event) => {
-            const item = selectItem(event.target!.alt)
+            const item = selectItem((<HTMLImageElement>event.target)!.alt)
 
             switch(item.type) {
                 case 'potato':
