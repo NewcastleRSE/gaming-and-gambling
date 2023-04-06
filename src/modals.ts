@@ -46,10 +46,10 @@ export function odds() {
         <h4 class="text-center mb-8">DIG TO WIN AN ITEM FOR YOUR POTATO!</h4>
         <p class="mb-4">Your chances of winning an item:</p>
         <ul class="list-none ml-8 mb-4">
-            <li>Common - 50%</li>
-            <li>Rare - 30%</li>
-            <li>Very rare - 15%</li>
-            <li>Legendary - 5%</li>
+            <li>Common - 1 in 2</li>
+            <li>Rare - 1 in 3</li>
+            <li>Very rare - 3 in 20</li>
+            <li>Legendary - 1 in 20</li>
         </ul>
         <p class="mb-8">Can you find the legendary golden potato skin?</p>
         <button id="closeOddsBtn" class="mx-auto btn-game">Close</button>
