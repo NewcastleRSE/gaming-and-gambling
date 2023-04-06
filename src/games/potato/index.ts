@@ -1,4 +1,5 @@
 import { items } from './../../images/items/'
+import { playDig, playFirework } from './../../games/potato/sound'
 
 function itemProbability() {
     var chances = [
@@ -35,6 +36,7 @@ type ObjectKey = keyof typeof itemsRemaining
 export { availableItems }
 
 export function dig(x: number, y: number) {
+    playDig()
     const digAnimation = document.querySelector<HTMLDivElement>('#dig-animation')
 
     digAnimation!.style.left = `${x-224}px`
@@ -56,7 +58,7 @@ export function dig(x: number, y: number) {
             document.querySelector<HTMLDivElement>('#foundItem #foundItemName')!.innerText = `${foundName} ${find.type}`
             document.querySelector<HTMLDivElement>('#foundItem #foundItemImage')!.setAttribute('alt', find.name)
             document.querySelector<HTMLDivElement>('#foundItem #foundItemImage')!.setAttribute('src', find.thumbnail)
-            
+            playFirework()
             document.querySelector<HTMLDivElement>('#foundItem')!.classList.toggle('hidden')
         }    
         else {
