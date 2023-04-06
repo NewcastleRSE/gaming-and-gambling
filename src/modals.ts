@@ -44,6 +44,7 @@ export function odds() {
     return Utils.htmlToElement(
     `<div id="odds" class="hidden modal fixed top-16 left-1/4 h-3/5 w-1/2 border-8 rounded-3xl p-8 text-white">
         <h4 class="text-center mb-8">DIG TO WIN AN ITEM FOR YOUR POTATO!</h4>
+        <p class="mb-4">Some young people told us they liked to own epic or legendary items because it made them feel lucky. They liked to show their in-game inventories to their friends.</p>
         <p class="mb-4">Your chances of winning an item:</p>
         <ul class="list-none ml-8 mb-4">
             <li>Common - 1 in 2</li>
