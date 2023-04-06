@@ -2,10 +2,11 @@ import home from './images/buttons/home.png'
 import game from './images/buttons/shovel.png'
 import inventoryBtn from './images/buttons/case.png'
 import info from './images/buttons/info.png'
-import sound from './images/buttons/speaker.png'
-import odds from './images/buttons/tree.png'
+import soundOff from './images/buttons/speaker-off.png'
+import odds from './images/buttons/percentage.png'
 
 import { inventory } from './games/potato/inventory'
+import { toggleMusic } from './games/potato/sound'
 
 import * as Potato from './games/potato'
 
@@ -16,7 +17,7 @@ export function init() {
         <button id="gameBtn" class="rounded-4 w-16 h-16 background-cover" style="background-image: url('${game}')" />
         <button id="inventoryBtn" class="rounded-4 w-16 h-16 background-cover" style="background-image: url('${inventoryBtn}')" />
         <button id="infoBtn" class="rounded-4 w-16 h-16 background-cover" style="background-image: url('${info}')" />
-        <button id="soundBtn" class="rounded-4 w-16 h-16 background-cover" style="background-image: url('${sound}')" />
+        <button id="soundBtn" class="rounded-4 w-16 h-16 background-cover" style="background-image: url('${soundOff}')" />
         <button id="oddsBtn" class="rounded-4 w-16 h-16 background-cover" style="background-image: url('${odds}')" />
     </div>`
 
@@ -51,7 +52,7 @@ export function init() {
     })
 
     menu!.querySelector<HTMLDivElement>('#soundBtn')!.addEventListener('click', () => {
-        console.log('sound')
+        toggleMusic()
     })
 
     menu!.querySelector<HTMLDivElement>('#oddsBtn')!.addEventListener('click', () => {

@@ -19,8 +19,8 @@ export function welcome() {
 export function digIn() {
     return Utils.htmlToElement(
     `<div id="digIn" class="hidden modal fixed top-16 left-1/4 w-1/2 border-8 rounded-3xl p-8 text-white">
-        <p class="mb-2">Can you find the legendary <span class="text-amber-400">golden potato</span> skin?</p>
-        <p class="mb-4">Dig in the potato patch to find items!</p>
+        <p class="mb-2">Dig in the potato patch to find items and dress Mr Potato in some cool gear.</p>
+        <p class="mb-4">Can you find the legendary <span class="text-amber-400">golden potato</span> skin?</p>
         <button id="digInBtn" class="mx-auto btn-game">Dig In</button>
     </div>`)
 }
@@ -44,12 +44,13 @@ export function odds() {
     return Utils.htmlToElement(
     `<div id="odds" class="hidden modal fixed top-16 left-1/4 h-3/5 w-1/2 border-8 rounded-3xl p-8 text-white">
         <h4 class="text-center mb-8">DIG TO WIN AN ITEM FOR YOUR POTATO!</h4>
+        <p class="mb-4">Some young people told us they liked to own epic or legendary items because it made them feel lucky. They liked to show their in-game inventories to their friends.</p>
         <p class="mb-4">Your chances of winning an item:</p>
         <ul class="list-none ml-8 mb-4">
-            <li>Common - 50%</li>
-            <li>Rare - 30%</li>
-            <li>Very rare - 15%</li>
-            <li>Legendary - 5%</li>
+            <li>Common - 1 in 2</li>
+            <li>Rare - 1 in 3</li>
+            <li>Very rare - 3 in 20</li>
+            <li>Legendary - 1 in 20</li>
         </ul>
         <p class="mb-8">Can you find the legendary golden potato skin?</p>
         <button id="closeOddsBtn" class="mx-auto btn-game">Close</button>
@@ -59,8 +60,9 @@ export function odds() {
 export function foundItem() {
     return Utils.htmlToElement(
     `<div id="foundItem" class="hidden modal fixed top-16 left-1/4 w-1/2 border-8 rounded-3xl p-8 text-white">
-        <p class="mb-2 text-center lowercase">You found the <span id="foundItemName"></span></p>
+        <p id="foundItemMessage" class="mb-2 text-center text-2xl lowercase"></p>
         <img id="foundItemImage" class="mx-auto my-5 w-24" />
+        <p id="foundItemPrompt" class="mb-4 text-center text-2xl"></p>
         <button id="foundItemBtn" class="mx-auto btn-game">Continue</button>
     </div>`)
 }
