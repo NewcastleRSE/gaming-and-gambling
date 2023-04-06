@@ -12,7 +12,7 @@ export function init() {
     </div>`)
 }
 
-timer.addEventListener('secondsUpdated', function (event) {
+timer.addEventListener('secondsUpdated', () => {
     document.querySelector<HTMLDivElement>('#timer')!.innerHTML = timer.getTimeValues().toString()
 })
 
