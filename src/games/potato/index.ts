@@ -54,8 +54,34 @@ export function dig(x: number, y: number) {
             availableItems[availableItems.indexOf(find)].found = true
 
             const foundName = find.name.replace(/([A-Z]+)/g, " $1").replace(/([A-Z][a-z])/g, " $1")
+            const rarity = find.rarity.replace(/([A-Z]+)/g, " $1").replace(/([A-Z][a-z])/g, " $1")
+
+            interface RarityColors {
+                common: any;
+                rare: any;
+                veryRare: any;
+                legendary: any;
+            }
+
+            const rarityColors: RarityColors = {
+                common: '#65EDF3',
+                rare: '#BBDC3E',
+                veryRare: '#F099FF',
+                legendary: '#F6B777'
+            }
+
+            type ObjectKey = keyof typeof rarityColors
+
+            const rarityName: ObjectKey = find.rarity
+
+            document.querySelector<HTMLDivElement>('#foundItem')!.setAttribute('style', `border-color: ${rarityColors[rarityName]}`)
+
+            document.querySelector<HTMLDivElement>('#foundItem #foundItemRarity')!.removeAttribute('class')
+            document.querySelector<HTMLDivElement>('#foundItem #foundItemRarity')!.classList.add(find.rarity)
+            document.querySelector<HTMLDivElement>('#foundItem #foundItemRarity')!.innerText = rarity
 
             document.querySelector<HTMLDivElement>('#foundItem #foundItemName')!.innerText = `${foundName} ${find.type}`
+
             document.querySelector<HTMLDivElement>('#foundItem #foundItemImage')!.setAttribute('alt', find.name)
             document.querySelector<HTMLDivElement>('#foundItem #foundItemImage')!.setAttribute('src', find.thumbnail)
             playFirework()
