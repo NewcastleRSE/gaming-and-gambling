@@ -1,6 +1,8 @@
 import { items } from './../../images/items/'
 import { playDig, playFirework } from './../../games/potato/sound'
 
+let itemsFoundCount = 0
+
 function itemProbability() {
     var chances = [
         ...Array(50).fill('common'),
@@ -50,6 +52,10 @@ export function dig(x: number, y: number) {
 
         if(itemsRemaining[foundItemRarity].length) {
             const find = itemsRemaining[foundItemRarity].pop()
+
+            itemsFoundCount++
+
+            console.log(itemsFoundCount)
             
             availableItems[availableItems.indexOf(find)].found = true
 
@@ -78,11 +84,31 @@ export function dig(x: number, y: number) {
 
             let message = `You found the <span class="${find.rarity}">${rarity}</span> ${foundName} ${find.type}`
 
+            let prompt = ''
+
+            switch (itemsFoundCount) {
+                case 2: 
+                    prompt = 'Did you know that you have a very small chance of finding the rarest items in a loot box? It can sometimes be as low as less than 1% chance of finding the rarest item each time you open a loot box.'
+                    break;
+                case 5:
+                    prompt = 'Did you know that loot boxes are designed to make you want to open another one? They often use flashing lights and exciting sounds to build suspense and surprise.'
+                    break;
+                case 10:
+                    prompt = 'Some young people find it very difficult to stop buying loot boxes, especially if they are trying to win a particular item. One young person told us: “in my head I was like \'stop\'. My guts were saying \'stop\'. Everything was saying \'stop\', but my brain wasn\'t. My brain was like \'keep opening\'. It was hard. It was like when you\'re addicted to something. […]. It was hard to stop.'
+                    break;
+                case 12:
+                    prompt = 'Children and young people told us that they often regretted the money they spent on loot boxes.'
+                    break;
+                default:
+                    break; 
+            }
+
             if(find.name === 'gold') {
                 message = `You did it! It only took you ${0} number of clicks and ${0} amount of time to win the golden potato. How does that feel?`
             }
 
             document.querySelector<HTMLDivElement>('#foundItem #foundItemMessage')!.innerHTML = message
+            document.querySelector<HTMLDivElement>('#foundItem #foundItemPrompt')!.innerHTML = prompt
             document.querySelector<HTMLDivElement>('#foundItem #foundItemImage')!.setAttribute('alt', find.name)
             document.querySelector<HTMLDivElement>('#foundItem #foundItemImage')!.setAttribute('src', find.thumbnail)
             playFirework()

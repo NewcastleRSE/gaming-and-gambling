@@ -61,6 +61,7 @@ export function foundItem() {
     `<div id="foundItem" class="hidden modal fixed top-16 left-1/4 w-1/2 border-8 rounded-3xl p-8 text-white">
         <p id="foundItemMessage" class="mb-2 text-center text-2xl lowercase"></p>
         <img id="foundItemImage" class="mx-auto my-5 w-24" />
+        <p id="foundItemPrompt" class="mb-4 text-center text-2xl"></p>
         <button id="foundItemBtn" class="mx-auto btn-game">Continue</button>
     </div>`)
 }
