@@ -36,14 +36,29 @@ body, #app {
     background-color: #65EDF3;
 }
 
+span.common {
+    color: #65EDF3;
+}
+
 .item.rare {
     background-color: #BBDC3E;
+}
+
+span.rare {
+    color: #BBDC3E;
 }
 
 .item.veryRare {
     background-color: #F099FF;
 }
 
+span.veryRare {
+    color: #F099FF;
+}
+
 .item.legendary {
     background-color: #F6B777;
+}
+span.legendary {
+    color: #F6B777;
 }

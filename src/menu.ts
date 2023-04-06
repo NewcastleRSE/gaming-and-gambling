@@ -6,6 +6,7 @@ import sound from './images/buttons/speaker.png'
 import odds from './images/buttons/tree.png'
 
 import { inventory } from './games/potato/inventory'
+import { toggleMusic } from './games/potato/sound'
 
 import * as Potato from './games/potato'
 
@@ -51,7 +52,7 @@ export function init() {
     })
 
     menu!.querySelector<HTMLDivElement>('#soundBtn')!.addEventListener('click', () => {
-        console.log('sound')
+        toggleMusic()
     })
 
     menu!.querySelector<HTMLDivElement>('#oddsBtn')!.addEventListener('click', () => {

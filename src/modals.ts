@@ -19,8 +19,8 @@ export function welcome() {
 export function digIn() {
     return Utils.htmlToElement(
     `<div id="digIn" class="hidden modal fixed top-16 left-1/4 w-1/2 border-8 rounded-3xl p-8 text-white">
-        <p class="mb-2">Can you find the legendary <span class="text-amber-400">golden potato</span> skin?</p>
-        <p class="mb-4">Dig in the potato patch to find items!</p>
+        <p class="mb-2">Dig in the potato patch to find items and dress Mr Potato in some cool gear.</p>
+        <p class="mb-4">Can you find the legendary <span class="text-amber-400">golden potato</span> skin?</p>
         <button id="digInBtn" class="mx-auto btn-game">Dig In</button>
     </div>`)
 }
@@ -59,7 +59,7 @@ export function odds() {
 export function foundItem() {
     return Utils.htmlToElement(
     `<div id="foundItem" class="hidden modal fixed top-16 left-1/4 w-1/2 border-8 rounded-3xl p-8 text-white">
-        <p class="mb-2 text-center lowercase">You found the <span id="foundItemName"></span></p>
+        <p id="foundItemMessage" class="mb-2 text-center text-2xl lowercase"></p>
         <img id="foundItemImage" class="mx-auto my-5 w-24" />
         <button id="foundItemBtn" class="mx-auto btn-game">Continue</button>
     </div>`)

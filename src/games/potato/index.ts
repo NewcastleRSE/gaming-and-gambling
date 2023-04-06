@@ -1,4 +1,5 @@
 import { items } from './../../images/items/'
+import { playDig, playFirework } from './../../games/potato/sound'
 
 function itemProbability() {
     var chances = [
@@ -35,6 +36,7 @@ type ObjectKey = keyof typeof itemsRemaining
 export { availableItems }
 
 export function dig(x: number, y: number) {
+    playDig()
     const digAnimation = document.querySelector<HTMLDivElement>('#dig-animation')
 
     digAnimation!.style.left = `${x-224}px`
@@ -52,17 +54,38 @@ export function dig(x: number, y: number) {
             availableItems[availableItems.indexOf(find)].found = true
 
             const foundName = find.name.replace(/([A-Z]+)/g, " $1").replace(/([A-Z][a-z])/g, " $1")
+            const rarity = find.rarity.replace(/([A-Z]+)/g, " $1").replace(/([A-Z][a-z])/g, " $1")
 
-            let message = `You did it! You found the ${foundName} ${find.type}`
+            interface RarityColors {
+                common: any;
+                rare: any;
+                veryRare: any;
+                legendary: any;
+            }
+
+            const rarityColors: RarityColors = {
+                common: '#65EDF3',
+                rare: '#BBDC3E',
+                veryRare: '#F099FF',
+                legendary: '#F6B777'
+            }
+
+            type ObjectKey = keyof typeof rarityColors
+
+            const rarityName: ObjectKey = find.rarity
+
+            document.querySelector<HTMLDivElement>('#foundItem')!.setAttribute('style', `border-color: ${rarityColors[rarityName]}`)
+
+            let message = `You found the <span class="${find.rarity}">${rarity}</span> ${foundName} ${find.type}`
 
             if(find.name === 'gold') {
                 message = `You did it! It only took you ${0} number of clicks and ${0} amount of time to win the golden potato. How does that feel?`
             }
 
-            document.querySelector<HTMLDivElement>('#foundItem #foundItemMessage')!.innerText = message
+            document.querySelector<HTMLDivElement>('#foundItem #foundItemMessage')!.innerHTML = message
             document.querySelector<HTMLDivElement>('#foundItem #foundItemImage')!.setAttribute('alt', find.name)
             document.querySelector<HTMLDivElement>('#foundItem #foundItemImage')!.setAttribute('src', find.thumbnail)
-            
+            playFirework()
             document.querySelector<HTMLDivElement>('#foundItem')!.classList.toggle('hidden')
         }    
         else {
