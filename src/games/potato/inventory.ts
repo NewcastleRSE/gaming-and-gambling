@@ -32,7 +32,7 @@ export function inventory() {
         let itemHTML = `<div class="w-14 h-14 text-center align-middle item ${item.rarity} ${item.type}">`
 
         if(item.found) {
-            itemHTML += `<img class="thumbnail cursor-pointer" src="${item.thumbnail}" alt="${item.name}" />`
+            itemHTML += `<img class="thumbnail cursor-pointer m-1 w-12" src="${item.thumbnail}" alt="${item.name}" />`
         }
         else {
             itemHTML += `<span>?</span>`
