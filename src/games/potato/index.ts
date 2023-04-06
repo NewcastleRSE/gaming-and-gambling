@@ -76,12 +76,13 @@ export function dig(x: number, y: number) {
 
             document.querySelector<HTMLDivElement>('#foundItem')!.setAttribute('style', `border-color: ${rarityColors[rarityName]}`)
 
-            document.querySelector<HTMLDivElement>('#foundItem #foundItemRarity')!.removeAttribute('class')
-            document.querySelector<HTMLDivElement>('#foundItem #foundItemRarity')!.classList.add(find.rarity)
-            document.querySelector<HTMLDivElement>('#foundItem #foundItemRarity')!.innerText = rarity
+            let message = `You found the <span class="${find.rarity}">${rarity}</span> ${foundName} ${find.type}`
 
-            document.querySelector<HTMLDivElement>('#foundItem #foundItemName')!.innerText = `${foundName} ${find.type}`
+            if(find.name === 'gold') {
+                message = `You did it! It only took you ${0} number of clicks and ${0} amount of time to win the golden potato. How does that feel?`
+            }
 
+            document.querySelector<HTMLDivElement>('#foundItem #foundItemMessage')!.innerHTML = message
             document.querySelector<HTMLDivElement>('#foundItem #foundItemImage')!.setAttribute('alt', find.name)
             document.querySelector<HTMLDivElement>('#foundItem #foundItemImage')!.setAttribute('src', find.thumbnail)
             playFirework()
