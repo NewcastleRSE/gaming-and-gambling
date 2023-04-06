@@ -53,7 +53,13 @@ export function dig(x: number, y: number) {
 
             const foundName = find.name.replace(/([A-Z]+)/g, " $1").replace(/([A-Z][a-z])/g, " $1")
 
-            document.querySelector<HTMLDivElement>('#foundItem #foundItemName')!.innerText = `${foundName} ${find.type}`
+            let message = `You did it! You found the ${foundName} ${find.type}`
+
+            if(find.name === 'gold') {
+                message = `You did it! It only took you ${0} number of clicks and ${0} amount of time to win the golden potato. How does that feel?`
+            }
+
+            document.querySelector<HTMLDivElement>('#foundItem #foundItemMessage')!.innerText = message
             document.querySelector<HTMLDivElement>('#foundItem #foundItemImage')!.setAttribute('alt', find.name)
             document.querySelector<HTMLDivElement>('#foundItem #foundItemImage')!.setAttribute('src', find.thumbnail)
             
