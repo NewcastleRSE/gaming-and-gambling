@@ -3,6 +3,7 @@ import * as Potato from './games/potato'
 import * as Utils from './utils'
 import * as Modals from './modals'
 import * as Menu from './menu'
+import * as Footer from './footer'
 import background from './images/backgrounds/background.svg'
 import name from './images/name.png'
 import dig from './images/dig.gif'
@@ -29,6 +30,7 @@ document.querySelector<HTMLDivElement>('#app')!.innerHTML = `
         <img id="digToy" class="absolute top-0 left-0" />
       </div>
     </div>
+    <div id="footer" class="hidden absolute bottom-4 left-0 right-0"></div>
   </div>
 `
 Menu.init()
@@ -44,6 +46,7 @@ document.querySelector<HTMLDivElement>('#app')!.append(Modals.odds())
 document.querySelector<HTMLDivElement>('#app')!.append(Modals.foundItem())
 
 document.querySelector<HTMLDivElement>('#app')!.append(inventoryWrapper)
+document.querySelector<HTMLDivElement>('#footer')!.append(Footer.init())
 
 const elements = {
   stage: document.querySelector<HTMLDivElement>('#stage'),
@@ -55,7 +58,8 @@ const elements = {
   info: document.querySelector<HTMLDivElement>('#info'),
   odds: document.querySelector<HTMLDivElement>('#odds'),
   foundItem: document.querySelector<HTMLDivElement>('#foundItem'),
-  potato: document.querySelector<HTMLDivElement>('#potato')
+  potato: document.querySelector<HTMLDivElement>('#potato'),
+  footer: document.querySelector<HTMLDivElement>('#footer')
 }
 
 elements.stage!.addEventListener('load', () => {
@@ -82,6 +86,7 @@ elements.digIn!.querySelector<HTMLDivElement>('#digInBtn')!.addEventListener('cl
   elements.digIn!.classList.toggle('hidden')
   elements.menu!.classList.toggle('hidden')
   elements.potato!.classList.toggle('hidden')
+  elements.footer!.classList.toggle('hidden')
 
   const selectedPotato = Potato.availableItems.find((item) => item.type === 'potato' && item.selected),
         selectedHat = Potato.availableItems.find((item) => item.type === 'hat' && item.selected),

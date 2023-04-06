@@ -1,4 +1,5 @@
 import { items } from './../../images/items/'
+import { updateClickCount } from '../../footer'
 import { playDig, playFirework } from './../../games/potato/sound'
 
 function itemProbability() {
@@ -37,6 +38,7 @@ export { availableItems }
 
 export function dig(x: number, y: number) {
     playDig()
+    updateClickCount()
     const digAnimation = document.querySelector<HTMLDivElement>('#dig-animation')
 
     digAnimation!.style.left = `${x-224}px`
