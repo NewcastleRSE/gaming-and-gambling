@@ -1,6 +1,8 @@
 import backgroundMusic from '../../sounds/background.wav'
 import digSound from '../../sounds/dig.wav'
 import fireworkSound from '../../sounds/fireworks.wav'
+import soundOn from './../../images/buttons/speaker-on.png'
+import soundOff from './../../images/buttons/speaker-off.png'
 
 const background = new Audio(backgroundMusic)
 background.loop = true
@@ -22,4 +24,5 @@ export function playFirework() {
 
 export function toggleMusic() {
     background.paused ? background.play() : background.pause()
+    document.querySelector<HTMLDivElement>('#soundBtn')!.setAttribute('style', `background-image: url('${background.paused ? soundOn : soundOff}')`)
 }
