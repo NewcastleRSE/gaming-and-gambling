@@ -2,6 +2,8 @@
 // import { Rarities } from '../../images/items'
 import { availableItems, selectItem } from './../../games/potato'
 
+let firstTime = true
+
 export function inventory() {
 
     let commonItems = '<h2 id="commonLabel">Common</h2><div class="flex flex-wrap gap-4 mb-4">',
@@ -24,8 +26,6 @@ export function inventory() {
         toy: null,
         shoes: null
     }
-
-    // type ObjectKey = keyof typeof selectedItems
 
     availableItems.forEach(item => {
 
@@ -66,9 +66,18 @@ export function inventory() {
     legendaryItems += '</div>'
 
     const inventoryWrapper = document.querySelector<HTMLDivElement>('#inventory')
+
+    let prompt = ''
+
+    if(firstTime) {
+        prompt = '<p>Many children in our research did not understand how probability works. They hoped that the more they spent on loot boxes, the more likely they were to find a rare item. But this is not how it works. Previous spending on loot boxes does not improve your chances of finding a rare item next time.</p>'
+    }
+
+    firstTime = false
     
     inventoryWrapper!.innerHTML =  
-        `<div class="flex flex-row">
+        `${prompt}
+        <div class="flex flex-row">
             <div class="w-1/2">
                 <div class="flex gap-4 mb-4">
                     <button id="allItems" class="rounded-4 w-16 h-16">All</button>
