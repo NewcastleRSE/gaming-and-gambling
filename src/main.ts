@@ -30,7 +30,7 @@ document.querySelector<HTMLDivElement>('#app')!.innerHTML = `
         <img id="digToy" class="absolute top-0 left-0" />
       </div>
     </div>
-    <div id="footer" class="hidden absolute bottom-4 left-0 right-0"></div>
+    <div id="footer" class="hidden absolute w-1/4 bottom-4 right-4"></div>
   </div>
 `
 Menu.init()

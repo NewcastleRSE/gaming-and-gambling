@@ -1,8 +1,11 @@
 import { items } from './../../images/items/'
 import { updateClickCount } from '../../footer'
 import { playDig, playFirework } from './../../games/potato/sound'
+import Timer from 'easytimer.js'
 
-let itemsFoundCount = 0
+let itemsFoundCount = 0,
+    gameStarted = false
+const timer = new Timer()
 
 function itemProbability() {
     var chances = [
@@ -39,8 +42,14 @@ type ObjectKey = keyof typeof itemsRemaining
 export { availableItems }
 
 export function dig(x: number, y: number) {
+
+    // If game hasn't started, start the clock
+    if(!gameStarted) {
+        timer.start()
+        gameStarted = true
+    }
+    
     playDig()
-    updateClickCount()
     const digAnimation = document.querySelector<HTMLDivElement>('#dig-animation')
 
     digAnimation!.style.left = `${x-224}px`
@@ -56,8 +65,6 @@ export function dig(x: number, y: number) {
             const find = itemsRemaining[foundItemRarity].pop()
 
             itemsFoundCount++
-
-            console.log(itemsFoundCount)
             
             availableItems[availableItems.indexOf(find)].found = true
 
@@ -86,6 +93,8 @@ export function dig(x: number, y: number) {
 
             let message = `You found the <span class="${find.rarity}">${rarity}</span> ${foundName} ${find.type}`
 
+            let timeSpent = `You've been playing for ${timer.getTimeValues().minutes} minutes ${timer.getTimeValues().seconds} seconds now and you've unlocked ${itemsFoundCount} item${itemsFoundCount > 1 ? 's' : ''}. With the in-game odds, you'll need to click at least X number of times to get the golden potato!`
+
             let prompt = ''
 
             switch (itemsFoundCount) {
@@ -110,11 +119,18 @@ export function dig(x: number, y: number) {
             }
 
             document.querySelector<HTMLDivElement>('#foundItem #foundItemMessage')!.innerHTML = message
+
+            if(itemsFoundCount > 1) {
+                document.querySelector<HTMLDivElement>('#foundItem #gameTime')!.innerHTML = timeSpent
+            }
+
             document.querySelector<HTMLDivElement>('#foundItem #foundItemPrompt')!.innerHTML = prompt
             document.querySelector<HTMLDivElement>('#foundItem #foundItemImage')!.setAttribute('alt', find.name)
             document.querySelector<HTMLDivElement>('#foundItem #foundItemImage')!.setAttribute('src', find.thumbnail)
             playFirework()
             document.querySelector<HTMLDivElement>('#foundItem')!.classList.toggle('hidden')
+
+            updateClickCount(itemsFoundCount)
         }    
         else {
             console.log({
