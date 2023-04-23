@@ -1,5 +1,5 @@
 import backgroundMusic from '../../sounds/background.wav'
-import digSound from '../../sounds/dig.wav'
+import digSound from '../../sounds/dig.mp3'
 import fireworkSound from '../../sounds/fireworks.wav'
 import soundOn from './../../images/buttons/speaker-on.png'
 import soundOff from './../../images/buttons/speaker-off.png'
