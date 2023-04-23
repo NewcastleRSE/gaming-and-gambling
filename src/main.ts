@@ -5,7 +5,6 @@ import * as Modals from './modals'
 import * as Menu from './menu'
 import * as Footer from './footer'
 import background from './images/backgrounds/background.svg'
-import name from './images/name.png'
 import dig from './images/dig.gif'
 
 document.querySelector<HTMLDivElement>('#app')!.innerHTML = `
@@ -14,9 +13,9 @@ document.querySelector<HTMLDivElement>('#app')!.innerHTML = `
     <img id="dig-animation" class="hidden fixed" src="${dig}" alt="dig" />
     <div id="start" class="flex-col grid place-items-center">
       <div id="title">
-        <div class="animate-bounce">
-          <img class="mx-auto" src="${name}" alt="name" />
-        </div>
+        <h1 id="gameTitle" class="animate-bounce">
+          Golden Potato<br />Hunt
+        </h1>
       </div>
       <button id="playBtn" class="mx-auto btn-game -mt-36">Play</button>
     </div> 
@@ -60,7 +59,6 @@ const elements = {
   info: document.querySelector<HTMLDivElement>('#info'),
   odds: document.querySelector<HTMLDivElement>('#odds'),
   foundItem: document.querySelector<HTMLDivElement>('#foundItem'),
-  // potato: document.querySelector<HTMLDivElement>('#potato'),
   footer: document.querySelector<HTMLDivElement>('#footer')
 }
 
@@ -120,21 +118,8 @@ elements.modals!.addEventListener('click', (event) => {
 elements.digIn!.querySelector<HTMLDivElement>('#digInBtn')!.addEventListener('click', () => {
   elements.digIn!.classList.toggle('hidden')
   elements.menu!.classList.toggle('hidden')
-  //elements.potato!.classList.toggle('hidden')
   elements.footer!.classList.toggle('hidden')
   elements.modals!.classList.toggle('-z-50')
-
-  // const selectedPotato = Potato.availableItems.find((item) => item.type === 'potato' && item.selected),
-  //       selectedHat = Potato.availableItems.find((item) => item.type === 'hat' && item.selected),
-  //       selectedShoes = Potato.availableItems.find((item) => item.type === 'shoes' && item.selected),
-  //       selectedAccessory = Potato.availableItems.find((item) => item.type === 'accessory' && item.selected),
-  //       selectedToy = Potato.availableItems.find((item) => item.type === 'toy' && item.selected)
-
-  // selectedPotato ? elements.potato!.querySelector<HTMLDivElement>('#digPotato')?.setAttribute('src', selectedPotato.image) : null
-  // selectedHat ? elements.potato!.querySelector<HTMLDivElement>('#digHat')?.setAttribute('src', selectedHat.image) : null
-  // selectedShoes ? elements.potato!.querySelector<HTMLDivElement>('#digShoes')?.setAttribute('src', selectedShoes.image) : null
-  // selectedAccessory ? elements.potato!.querySelector<HTMLDivElement>('#digAccessory')?.setAttribute('src', selectedAccessory.image) : null
-  // selectedToy ? elements.potato!.querySelector<HTMLDivElement>('#digToy')?.setAttribute('src', selectedToy.image) : null
 })
 
 elements.info!.querySelector<HTMLDivElement>('#closeInfoBtn')!.addEventListener('click', () => {

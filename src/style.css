@@ -7,6 +7,11 @@
     src: url("fonts/LapsusPro-Bold.otf") format("opentype");
 }
 
+@font-face {
+    font-family: Sniglet-ExtraBold;
+    src: url('fonts/Sniglet-ExtraBold.ttf') format('opentype');
+}
+
 .hidden {
     display: none !important;
 }
@@ -61,4 +66,18 @@ span.veryRare {
 }
 span.legendary {
     color: #F6B777;
+}
+
+#gameTitle {
+    text-align: center;
+    font-size: 80px;
+    font-family: Sniglet-ExtraBold;
+    color: #F9A29F;
+    -webkit-text-stroke: 4px white;
+    text-shadow:
+        3px 3px 0 #ffe9f7,
+        -1px -1px 0 #ffe9f7,  
+        1px -1px 0 #ffe9f7,
+        -1px 1px 0 #ffe9f7,
+        1px 1px 0 #ffe9f7;
 }
