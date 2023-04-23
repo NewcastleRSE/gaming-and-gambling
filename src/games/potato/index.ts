@@ -1,5 +1,5 @@
 import { items } from './../../images/items/'
-import { updateClickCount } from '../../footer'
+import { updateClickCount } from './../../footer'
 import { playDig, playFirework } from './../../games/potato/sound'
 import Timer from 'easytimer.js'
 
@@ -129,6 +129,7 @@ export function dig(x: number, y: number) {
             document.querySelector<HTMLDivElement>('#foundItem #foundItemImage')!.setAttribute('src', find.thumbnail)
             playFirework()
             document.querySelector<HTMLDivElement>('#foundItem')!.classList.toggle('hidden')
+            document.querySelector<HTMLDivElement>('#modals')!.classList.toggle('-z-50')
 
             updateClickCount(itemsFoundCount)
         }    
