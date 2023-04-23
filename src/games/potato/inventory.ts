@@ -1,4 +1,4 @@
-// import * as Utils from './../../utils'
+import * as Utils from './../../utils'
 // import { Rarities } from '../../images/items'
 import { availableItems, selectItem } from './../../games/potato'
 
@@ -117,26 +117,28 @@ export function inventory() {
         thumbnails[i].addEventListener('click', (event) => {
             const item = selectItem((<HTMLImageElement>event.target)!.alt)
 
+            const stage = Utils.getContentDocument(document.querySelector<HTMLDivElement>('#stage'))
+
             switch(item.type) {
                 case 'potato':
                     showCase!.querySelector<HTMLDivElement>('#selectedPotato')?.setAttribute('src', item.image)
-                    document.querySelector<HTMLDivElement>('#digPotato')?.setAttribute('src', item.image)
+                    stage.querySelector('image#selectedPotato').setAttribute('xlink:href', item.image)
                     break
                 case 'hat':
                     showCase!.querySelector<HTMLDivElement>('#selectedHat')?.setAttribute('src', item.image)
-                    document.querySelector<HTMLDivElement>('#digHat')?.setAttribute('src', item.image)
+                    stage.querySelector('image#selectedHat').setAttribute('xlink:href', item.image)
                     break
                 case 'toy':
                     showCase!.querySelector<HTMLDivElement>('#selectedToy')?.setAttribute('src', item.image)
-                    document.querySelector<HTMLDivElement>('#digToy')?.setAttribute('src', item.image)
+                    stage.querySelector('image#selectedToy').setAttribute('xlink:href', item.image)
                     break
                 case 'shoes':
                     showCase!.querySelector<HTMLDivElement>('#selectedShoes')?.setAttribute('src', item.image)
-                    document.querySelector<HTMLDivElement>('#digShoes')?.setAttribute('src', item.image)
+                    stage.querySelector('image#selectedShoes').setAttribute('xlink:href', item.image)
                     break
                 case 'accessory':
                     showCase!.querySelector<HTMLDivElement>('#selectedAccessory')?.setAttribute('src', item.image)
-                    document.querySelector<HTMLDivElement>('#digAccessory')?.setAttribute('src', item.image)
+                    stage.querySelector('image#selectedAccessory').setAttribute('xlink:href', item.image)
                     break
             }
         })

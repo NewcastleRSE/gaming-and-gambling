@@ -12,7 +12,7 @@ document.querySelector<HTMLDivElement>('#app')!.innerHTML = `
   <div id="wrapper" class="drop-shadow-lg relative h-screen">
     <embed id="stage" class="absolute -z-50" src="${background}"></embed>
     <img id="dig-animation" class="hidden fixed" src="${dig}" alt="dig" />
-    <div id="start" class="flex flex-col grid place-items-center">
+    <div id="start" class="flex-col grid place-items-center">
       <div id="title">
         <div class="animate-bounce">
           <img class="mx-auto" src="${name}" alt="name" />
@@ -74,15 +74,13 @@ const selectedItems = {
 
 elements.stage!.addEventListener('load', () => {
   const vegetablePatch = Utils.getContentDocument(elements.stage).querySelector('g#vegetablePatch')
-  const character = Utils.getContentDocument(elements.stage).querySelector('image#potato')
+  const character = Utils.getContentDocument(elements.stage).querySelector('image#selectedPotato')
 
   elements.start!.style.height = elements.stage?.offsetHeight + 'px'
 
   vegetablePatch.addEventListener('click', (event: PointerEvent) => {
     Potato.dig(event.clientX, event.clientY)
   })
-
-  console.log(selectedItems.base)
 
   character.setAttribute('xlink:href', selectedItems.base!.image)
 })
@@ -93,22 +91,20 @@ elements.start!.querySelector<HTMLDivElement>('#playBtn')!.addEventListener('cli
   elements.modals!.classList.toggle('-z-50')
 })
 
-
-
 elements.welcome!.querySelector<HTMLDivElement>('#continueBtn')!.addEventListener('click', () => {
   elements.welcome!.classList.toggle('hidden')
   elements.digIn!.classList.toggle('hidden')
 })
 
-elements.modals!.addEventListener('click', () => {
+elements.modals!.addEventListener('click', (event) => {
   const openModal = elements.modals!.querySelectorAll<HTMLDivElement>('.modal:not(.hidden)')
   
-  if(openModal.length) {
+  if(openModal.length && event.target instanceof Element && event.target!.getAttribute('id') === 'modals') {
     switch(openModal![0].getAttribute('id')) {
       case 'foundItem': 
         elements.foundItem!.classList.toggle('hidden')
         elements.modals!.classList.toggle('-z-50')
-      case 'inventory': 
+      case 'inventory':
         elements.inventory!.classList.toggle('hidden')
         elements.modals!.classList.toggle('-z-50')
       case 'info': 

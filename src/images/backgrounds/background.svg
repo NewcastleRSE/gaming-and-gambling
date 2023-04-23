@@ -4260,6 +4260,11 @@
 		</g>
 	</g>
 </g>
-<image style="overflow:visible;" width="453" height="423" id="potato" xlink:href="../items/potato-normal.png"  transform="matrix(1 0 0 1 566.5 156.5)">
-</image>
+<g id="character">
+	<image style="overflow:visible;" width="453" height="423" id="selectedPotato" xlink:href=""  transform="matrix(1 0 0 1 566.5 156.5)" />
+	<image style="overflow:visible;" width="453" height="423" id="selectedHat" xlink:href=""  transform="matrix(1 0 0 1 566.5 156.5)" />
+	<image style="overflow:visible;" width="453" height="423" id="selectedShoes" xlink:href=""  transform="matrix(1 0 0 1 566.5 156.5)" />
+	<image style="overflow:visible;" width="453" height="423" id="selectedAccessory" xlink:href=""  transform="matrix(1 0 0 1 566.5 156.5)" />
+	<image style="overflow:visible;" width="453" height="423" id="selectedToy" xlink:href=""  transform="matrix(1 0 0 1 566.5 156.5)" />
+</g>
 </svg>
