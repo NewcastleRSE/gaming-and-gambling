@@ -98,19 +98,24 @@ elements.modals!.addEventListener('click', (event) => {
   const openModal = elements.modals!.querySelectorAll<HTMLDivElement>('.modal:not(.hidden)')
   
   if(openModal.length && event.target instanceof Element && event.target!.getAttribute('id') === 'modals') {
+    console.log(openModal)
     switch(openModal![0].getAttribute('id')) {
       case 'foundItem': 
         elements.foundItem!.classList.toggle('hidden')
         elements.modals!.classList.toggle('-z-50')
+        break
       case 'inventory':
         elements.inventory!.classList.toggle('hidden')
         elements.modals!.classList.toggle('-z-50')
+        break
       case 'info': 
         elements.info!.classList.toggle('hidden')
         elements.modals!.classList.toggle('-z-50')
+        break
       case 'odds': 
         elements.odds!.classList.toggle('hidden')
         elements.modals!.classList.toggle('-z-50')
+        break
     }
   }
 })
