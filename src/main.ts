@@ -32,6 +32,7 @@ document.querySelector<HTMLDivElement>('#app')!.innerHTML = `
     </div>
     <div id="footer" class="hidden absolute w-1/4 bottom-4 right-4"></div>
   </div>
+  <div id="modals" class="-z-50 fixed top-0 bottom-0 left-0 right-0 bg-gray-500/50"></div>
 `
 Menu.init()
 
@@ -39,16 +40,17 @@ const inventoryWrapper = document.createElement('div')
 inventoryWrapper.setAttribute('id', 'inventory')
 inventoryWrapper.classList.add('hidden', 'modal','fixed','top-16','left-1/4','w-1/2','border-8','rounded-3xl','p-8','text-white')
 
-document.querySelector<HTMLDivElement>('#app')!.append(Modals.welcome())
-document.querySelector<HTMLDivElement>('#app')!.append(Modals.digIn())
-document.querySelector<HTMLDivElement>('#app')!.append(Modals.info())
-document.querySelector<HTMLDivElement>('#app')!.append(Modals.odds())
-document.querySelector<HTMLDivElement>('#app')!.append(Modals.foundItem())
+document.querySelector<HTMLDivElement>('#modals')!.append(Modals.welcome())
+document.querySelector<HTMLDivElement>('#modals')!.append(Modals.digIn())
+document.querySelector<HTMLDivElement>('#modals')!.append(Modals.info())
+document.querySelector<HTMLDivElement>('#modals')!.append(Modals.odds())
+document.querySelector<HTMLDivElement>('#modals')!.append(Modals.foundItem())
 
-document.querySelector<HTMLDivElement>('#app')!.append(inventoryWrapper)
+document.querySelector<HTMLDivElement>('#modals')!.append(inventoryWrapper)
 document.querySelector<HTMLDivElement>('#footer')!.append(Footer.init())
 
 const elements = {
+  modals: document.querySelector<HTMLDivElement>('#modals'),
   stage: document.querySelector<HTMLDivElement>('#stage'),
   start: document.querySelector<HTMLDivElement>('#start'),
   welcome: document.querySelector<HTMLDivElement>('#welcome'),
@@ -75,11 +77,35 @@ elements.stage!.addEventListener('load', () => {
 elements.start!.querySelector<HTMLDivElement>('#playBtn')!.addEventListener('click', () => {
   elements.start!.classList.toggle('hidden')
   elements.welcome!.classList.toggle('hidden')
+  elements.modals!.classList.toggle('-z-50')
 })
+
+
 
 elements.welcome!.querySelector<HTMLDivElement>('#continueBtn')!.addEventListener('click', () => {
   elements.welcome!.classList.toggle('hidden')
   elements.digIn!.classList.toggle('hidden')
+})
+
+elements.modals!.addEventListener('click', () => {
+  const openModal = elements.modals!.querySelectorAll<HTMLDivElement>('.modal:not(.hidden)')
+  
+  if(openModal.length) {
+    switch(openModal![0].getAttribute('id')) {
+      case 'foundItem': 
+        elements.foundItem!.classList.toggle('hidden')
+        elements.modals!.classList.toggle('-z-50')
+      case 'inventory': 
+        elements.inventory!.classList.toggle('hidden')
+        elements.modals!.classList.toggle('-z-50')
+      case 'info': 
+        elements.info!.classList.toggle('hidden')
+        elements.modals!.classList.toggle('-z-50')
+      case 'odds': 
+        elements.odds!.classList.toggle('hidden')
+        elements.modals!.classList.toggle('-z-50')
+    }
+  }
 })
 
 elements.digIn!.querySelector<HTMLDivElement>('#digInBtn')!.addEventListener('click', () => {
@@ -87,6 +113,7 @@ elements.digIn!.querySelector<HTMLDivElement>('#digInBtn')!.addEventListener('cl
   elements.menu!.classList.toggle('hidden')
   elements.potato!.classList.toggle('hidden')
   elements.footer!.classList.toggle('hidden')
+  elements.modals!.classList.toggle('-z-50')
 
   const selectedPotato = Potato.availableItems.find((item) => item.type === 'potato' && item.selected),
         selectedHat = Potato.availableItems.find((item) => item.type === 'hat' && item.selected),
