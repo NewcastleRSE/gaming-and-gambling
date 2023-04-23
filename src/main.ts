@@ -29,7 +29,7 @@ document.querySelector<HTMLDivElement>('#app')!.innerHTML = `
         <img id="digToy" class="absolute top-0 left-0" />
       </div>
     </div>
-    <div id="footer" class="hidden absolute w-1/4 bottom-4 right-4"></div>
+    <div id="footer" class="hidden absolute w-1/2 lg:w-1/3 xl:w-1/3 2xl:w-1/4 bottom-4 right-4"></div>
   </div>
   <div id="modals" class="-z-50 fixed top-0 bottom-0 left-0 right-0 bg-gray-500/50"></div>
 `
