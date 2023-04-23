@@ -20,7 +20,7 @@ function itemProbability() {
 
 const availableItems = items.map(item => ({ ...item, selected: false, found: false }))
 
-const defaultPotatoIndex = availableItems.findIndex((item) => item.name === 'gold')
+const defaultPotatoIndex = availableItems.findIndex((item) => item.name === 'normal')
 availableItems[defaultPotatoIndex].selected = true
 
 interface ItemsRemaining {
