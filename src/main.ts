@@ -12,7 +12,7 @@ document.querySelector<HTMLDivElement>('#app')!.innerHTML = `
   <div id="wrapper" class="drop-shadow-lg relative h-screen">
     <embed id="stage" class="absolute -z-50" src="${background}"></embed>
     <img id="dig-animation" class="hidden fixed" src="${dig}" alt="dig" />
-    <div id="start" class="flex flex-col grid place-items-center">
+    <div id="start" class="flex-col grid place-items-center">
       <div id="title">
         <div class="animate-bounce">
           <img class="mx-auto" src="${name}" alt="name" />
@@ -60,18 +60,29 @@ const elements = {
   info: document.querySelector<HTMLDivElement>('#info'),
   odds: document.querySelector<HTMLDivElement>('#odds'),
   foundItem: document.querySelector<HTMLDivElement>('#foundItem'),
-  potato: document.querySelector<HTMLDivElement>('#potato'),
+  // potato: document.querySelector<HTMLDivElement>('#potato'),
   footer: document.querySelector<HTMLDivElement>('#footer')
+}
+
+const selectedItems = {
+  base: Potato.availableItems.find((item) => item.type === 'potato' && item.selected),
+  hat: Potato.availableItems.find((item) => item.type === 'hat' && item.selected),
+  shoes: Potato.availableItems.find((item) => item.type === 'shoes' && item.selected),
+  accessory: Potato.availableItems.find((item) => item.type === 'accessory' && item.selected),
+  toy: Potato.availableItems.find((item) => item.type === 'toy' && item.selected)
 }
 
 elements.stage!.addEventListener('load', () => {
   const vegetablePatch = Utils.getContentDocument(elements.stage).querySelector('g#vegetablePatch')
+  const character = Utils.getContentDocument(elements.stage).querySelector('image#selectedPotato')
 
   elements.start!.style.height = elements.stage?.offsetHeight + 'px'
 
   vegetablePatch.addEventListener('click', (event: PointerEvent) => {
     Potato.dig(event.clientX, event.clientY)
   })
+
+  character.setAttribute('xlink:href', selectedItems.base!.image)
 })
 
 elements.start!.querySelector<HTMLDivElement>('#playBtn')!.addEventListener('click', () => {
@@ -80,22 +91,20 @@ elements.start!.querySelector<HTMLDivElement>('#playBtn')!.addEventListener('cli
   elements.modals!.classList.toggle('-z-50')
 })
 
-
-
 elements.welcome!.querySelector<HTMLDivElement>('#continueBtn')!.addEventListener('click', () => {
   elements.welcome!.classList.toggle('hidden')
   elements.digIn!.classList.toggle('hidden')
 })
 
-elements.modals!.addEventListener('click', () => {
+elements.modals!.addEventListener('click', (event) => {
   const openModal = elements.modals!.querySelectorAll<HTMLDivElement>('.modal:not(.hidden)')
   
-  if(openModal.length) {
+  if(openModal.length && event.target instanceof Element && event.target!.getAttribute('id') === 'modals') {
     switch(openModal![0].getAttribute('id')) {
       case 'foundItem': 
         elements.foundItem!.classList.toggle('hidden')
         elements.modals!.classList.toggle('-z-50')
-      case 'inventory': 
+      case 'inventory':
         elements.inventory!.classList.toggle('hidden')
         elements.modals!.classList.toggle('-z-50')
       case 'info': 
@@ -111,31 +120,34 @@ elements.modals!.addEventListener('click', () => {
 elements.digIn!.querySelector<HTMLDivElement>('#digInBtn')!.addEventListener('click', () => {
   elements.digIn!.classList.toggle('hidden')
   elements.menu!.classList.toggle('hidden')
-  elements.potato!.classList.toggle('hidden')
+  //elements.potato!.classList.toggle('hidden')
   elements.footer!.classList.toggle('hidden')
   elements.modals!.classList.toggle('-z-50')
 
-  const selectedPotato = Potato.availableItems.find((item) => item.type === 'potato' && item.selected),
-        selectedHat = Potato.availableItems.find((item) => item.type === 'hat' && item.selected),
-        selectedShoes = Potato.availableItems.find((item) => item.type === 'shoes' && item.selected),
-        selectedAccessory = Potato.availableItems.find((item) => item.type === 'accessory' && item.selected),
-        selectedToy = Potato.availableItems.find((item) => item.type === 'toy' && item.selected)
+  // const selectedPotato = Potato.availableItems.find((item) => item.type === 'potato' && item.selected),
+  //       selectedHat = Potato.availableItems.find((item) => item.type === 'hat' && item.selected),
+  //       selectedShoes = Potato.availableItems.find((item) => item.type === 'shoes' && item.selected),
+  //       selectedAccessory = Potato.availableItems.find((item) => item.type === 'accessory' && item.selected),
+  //       selectedToy = Potato.availableItems.find((item) => item.type === 'toy' && item.selected)
 
-  selectedPotato ? elements.potato!.querySelector<HTMLDivElement>('#digPotato')?.setAttribute('src', selectedPotato.image) : null
-  selectedHat ? elements.potato!.querySelector<HTMLDivElement>('#digHat')?.setAttribute('src', selectedHat.image) : null
-  selectedShoes ? elements.potato!.querySelector<HTMLDivElement>('#digShoes')?.setAttribute('src', selectedShoes.image) : null
-  selectedAccessory ? elements.potato!.querySelector<HTMLDivElement>('#digAccessory')?.setAttribute('src', selectedAccessory.image) : null
-  selectedToy ? elements.potato!.querySelector<HTMLDivElement>('#digToy')?.setAttribute('src', selectedToy.image) : null
+  // selectedPotato ? elements.potato!.querySelector<HTMLDivElement>('#digPotato')?.setAttribute('src', selectedPotato.image) : null
+  // selectedHat ? elements.potato!.querySelector<HTMLDivElement>('#digHat')?.setAttribute('src', selectedHat.image) : null
+  // selectedShoes ? elements.potato!.querySelector<HTMLDivElement>('#digShoes')?.setAttribute('src', selectedShoes.image) : null
+  // selectedAccessory ? elements.potato!.querySelector<HTMLDivElement>('#digAccessory')?.setAttribute('src', selectedAccessory.image) : null
+  // selectedToy ? elements.potato!.querySelector<HTMLDivElement>('#digToy')?.setAttribute('src', selectedToy.image) : null
 })
 
 elements.info!.querySelector<HTMLDivElement>('#closeInfoBtn')!.addEventListener('click', () => {
   elements.info!.classList.toggle('hidden')
+  elements.modals!.classList.toggle('-z-50')
 })
 
 elements.odds!.querySelector<HTMLDivElement>('#closeOddsBtn')!.addEventListener('click', () => {
   elements.odds!.classList.toggle('hidden')
+  elements.modals!.classList.toggle('-z-50')
 })
 
 elements.foundItem!.querySelector<HTMLDivElement>('#foundItemBtn')!.addEventListener('click', () => {
   elements.foundItem!.classList.toggle('hidden')
+  elements.modals!.classList.toggle('-z-50')
 })
