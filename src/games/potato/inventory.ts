@@ -169,6 +169,7 @@ export function inventory() {
 
     inventoryWrapper!.querySelector<HTMLDivElement>('#inventoryCloseBtn')!.addEventListener('click', () => {
         inventoryWrapper!.classList.toggle('hidden')
+        document.querySelector<HTMLDivElement>('#modals')!.classList.toggle('-z-50')
     })
 }
 
