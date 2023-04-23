@@ -140,7 +140,7 @@ export function dig(x: number, y: number) {
                 legendary: itemsRemaining.legendary.length,
             })
         }
-    }, 500)
+    }, 5000)
 }
 
 export function selectItem(name: string) {
