@@ -14,3 +14,7 @@ export function htmlToElement(html: string) {
   template.innerHTML = html
   return <HTMLElement>template.content.firstChild
 }
+
+export function closeModal(event: any) {
+  console.log(event)
+}

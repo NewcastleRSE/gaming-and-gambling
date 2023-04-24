@@ -45,10 +45,12 @@ export function init() {
         }
         
         document.querySelector<HTMLDivElement>('#inventory')!.classList.toggle('hidden')
+        document.querySelector<HTMLDivElement>('#modals')!.classList.toggle('-z-50')
     })
 
     menu!.querySelector<HTMLDivElement>('#infoBtn')!.addEventListener('click', () => {
         document.querySelector<HTMLDivElement>('#info')!.classList.toggle('hidden')
+        document.querySelector<HTMLDivElement>('#modals')!.classList.toggle('-z-50')
     })
 
     menu!.querySelector<HTMLDivElement>('#soundBtn')!.addEventListener('click', () => {
@@ -57,5 +59,8 @@ export function init() {
 
     menu!.querySelector<HTMLDivElement>('#oddsBtn')!.addEventListener('click', () => {
         document.querySelector<HTMLDivElement>('#odds')!.classList.toggle('hidden')
+        document.querySelector<HTMLDivElement>('#modals')!.classList.toggle('-z-50')
     })
+
+    toggleMusic()
 }
