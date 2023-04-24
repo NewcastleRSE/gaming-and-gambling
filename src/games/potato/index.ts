@@ -16,7 +16,7 @@ function itemProbability() {
     ]
     var idx = Math.floor(Math.random() * chances.length)
     return chances[idx]
-  }
+}
 
 const availableItems = items.map(item => ({ ...item, selected: false, found: false }))
 
