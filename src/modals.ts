@@ -5,7 +5,7 @@ import ukri from './images/logos/UKRI-logo.png'
 
 export function welcome() {
     return Utils.htmlToElement(
-    `<div id="welcome" class="hidden modal fixed top-16 left-1/4 h-3/5 w-1/2 border-8 rounded-3xl p-8 text-lg text-white">
+    `<div id="welcome" class="hidden modal overflow-scroll fixed top-16 left-1/4 h-3/5 w-1/2 border-8 rounded-3xl p-8 text-lg text-white">
         <div>
             <p class="mb-4">This game is all about loot boxes. Loot boxes are games of chance. They contain a randomised selection of in-game items of unknown value that are only revealed when the loot box is opened.</p>
             <p class="mb-4">Loot boxes are known by many different names, depending on the games you play. They are sometimes known as crates, card packs, eggs, bags, chests, spins, and wishes. In this game, they are called digs.</p>

@@ -8,16 +8,16 @@ import background from './images/backgrounds/background.svg'
 import dig from './images/dig.gif'
 
 document.querySelector<HTMLDivElement>('#app')!.innerHTML = `
-  <div id="wrapper" class="drop-shadow-lg relative h-screen">
+  <div id="wrapper" class="drop-shadow-lg relative h-screen overflow-hidden">
     <embed id="stage" class="absolute -z-50" src="${background}"></embed>
     <img id="dig-animation" class="hidden fixed" src="${dig}" alt="dig" />
-    <div id="start" class="flex-col grid place-items-center">
+    <div id="start" class="h-full flex-col grid place-items-center start-1/4">
       <div id="title">
         <h1 id="gameTitle" class="animate-bounce">
           Golden Potato<br />Hunt
         </h1>
       </div>
-      <button id="playBtn" class="mx-auto btn-game -mt-36">Play</button>
+      <button id="playBtn" class="btn-game">Play</button>
     </div> 
     <div id="menu" class="hidden w-1/2 mx-auto pt-4"></div>
     <div class="absolute" style="left: 55%; top: 35%">
@@ -74,7 +74,7 @@ elements.stage!.addEventListener('load', () => {
   const vegetablePatch = Utils.getContentDocument(elements.stage).querySelector('g#vegetablePatch')
   const character = Utils.getContentDocument(elements.stage).querySelector('image#selectedPotato')
 
-  elements.start!.style.height = elements.stage?.offsetHeight + 'px'
+  // elements.start!.style.height = elements.stage?.offsetHeight + 'px'
 
   vegetablePatch.addEventListener('click', (event: PointerEvent) => {
     Potato.dig(event.clientX, event.clientY)
