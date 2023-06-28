@@ -16,8 +16,8 @@ document.querySelector<HTMLDivElement>('#app')!.innerHTML = `
         <div class="animate-bounce">
           <img class="mx-auto" src="${name}" alt="name" />
         </div>
+        <button id="playBtn" class="mx-auto btn-game mt-12">Play</button>
       </div>
-      <button id="playBtn" class="mx-auto btn-game -mt-36">Play</button>
     </div> 
     <div id="menu" class="hidden w-1/2 mx-auto pt-4"></div>
     <div class="absolute" style="left: 55%; top: 35%">
