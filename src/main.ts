@@ -13,10 +13,10 @@ document.querySelector<HTMLDivElement>('#app')!.innerHTML = `
     <img id="dig-animation" class="hidden fixed" src="${dig}" alt="dig" />
     <div id="start" class="h-full flex-col grid place-items-center start-1/4">
       <div id="title">
-        <div class="animate-bounce">
-          <img class="mx-auto" src="${name}" alt="name" />
-        </div>
-        <button id="playBtn" class="mx-auto btn-game mt-12">Play</button>
+        <h1 id="gameTitle" class="animate-bounce">
+          Golden Potato<br />Hunt
+        </h1>
+        <button id="playBtn" class="mx-auto mt-12 btn-game">Play</button>
       </div>
     </div> 
     <div id="menu" class="hidden w-1/2 mx-auto pt-4"></div>
