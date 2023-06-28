@@ -16,8 +16,8 @@ document.querySelector<HTMLDivElement>('#app')!.innerHTML = `
         <h1 id="gameTitle" class="animate-bounce">
           Golden Potato<br />Hunt
         </h1>
+        <button id="playBtn" class="mx-auto mt-12 btn-game">Play</button>
       </div>
-      <button id="playBtn" class="btn-game">Play</button>
     </div> 
     <div id="menu" class="hidden w-1/2 mx-auto pt-4"></div>
     <div class="absolute" style="left: 55%; top: 35%">
