@@ -96,11 +96,11 @@
     <img id="dig-animation" class="hidden fixed" src="${Tt}" alt="dig" />
     <div id="start" class="h-full flex-col grid place-items-center start-1/4">
       <div id="title">
-        <h1 id="gameTitle" class="animate-bounce">
-          Golden Potato<br />Hunt
-        </h1>
+        <div class="animate-bounce">
+          <img class="mx-auto" src="${name}" alt="name" />
+        </div>
+        <button id="playBtn" class="mx-auto btn-game mt-12">Play</button>
       </div>
-      <button id="playBtn" class="btn-game">Play</button>
     </div> 
     <div id="menu" class="hidden w-1/2 mx-auto pt-4"></div>
     <div class="absolute" style="left: 55%; top: 35%">
