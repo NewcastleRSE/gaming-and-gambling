@@ -1,6 +1,8 @@
-// import * as Utils from './../../utils'
+import * as Utils from './../../utils'
 // import { Rarities } from '../../images/items'
 import { availableItems, selectItem } from './../../games/potato'
+
+let firstTime = true
 
 export function inventory() {
 
@@ -25,14 +27,12 @@ export function inventory() {
         shoes: null
     }
 
-    // type ObjectKey = keyof typeof selectedItems
-
     availableItems.forEach(item => {
 
         let itemHTML = `<div class="w-14 h-14 text-center align-middle item ${item.rarity} ${item.type}">`
 
         if(item.found) {
-            itemHTML += `<img class="thumbnail cursor-pointer" src="${item.thumbnail}" alt="${item.name}" />`
+            itemHTML += `<img class="thumbnail cursor-pointer m-1 w-12" src="${item.thumbnail}" alt="${item.name}" />`
         }
         else {
             itemHTML += `<span>?</span>`
@@ -66,9 +66,18 @@ export function inventory() {
     legendaryItems += '</div>'
 
     const inventoryWrapper = document.querySelector<HTMLDivElement>('#inventory')
+
+    let prompt = ''
+
+    if(firstTime) {
+        prompt = '<p>Many children in our research did not understand how probability works. They hoped that the more they spent on loot boxes, the more likely they were to find a rare item. But this is not how it works. Previous spending on loot boxes does not improve your chances of finding a rare item next time.</p>'
+    }
+
+    firstTime = false
     
     inventoryWrapper!.innerHTML =  
-        `<div class="flex flex-row">
+        `${prompt}
+        <div class="flex flex-row">
             <div class="w-1/2">
                 <div class="flex gap-4 mb-4">
                     <button id="allItems" class="rounded-4 w-16 h-16">All</button>
@@ -108,26 +117,28 @@ export function inventory() {
         thumbnails[i].addEventListener('click', (event) => {
             const item = selectItem((<HTMLImageElement>event.target)!.alt)
 
+            const stage = Utils.getContentDocument(document.querySelector<HTMLDivElement>('#stage'))
+
             switch(item.type) {
                 case 'potato':
                     showCase!.querySelector<HTMLDivElement>('#selectedPotato')?.setAttribute('src', item.image)
-                    document.querySelector<HTMLDivElement>('#digPotato')?.setAttribute('src', item.image)
+                    stage.querySelector('image#selectedPotato').setAttribute('xlink:href', item.image)
                     break
                 case 'hat':
                     showCase!.querySelector<HTMLDivElement>('#selectedHat')?.setAttribute('src', item.image)
-                    document.querySelector<HTMLDivElement>('#digHat')?.setAttribute('src', item.image)
+                    stage.querySelector('image#selectedHat').setAttribute('xlink:href', item.image)
                     break
                 case 'toy':
                     showCase!.querySelector<HTMLDivElement>('#selectedToy')?.setAttribute('src', item.image)
-                    document.querySelector<HTMLDivElement>('#digToy')?.setAttribute('src', item.image)
+                    stage.querySelector('image#selectedToy').setAttribute('xlink:href', item.image)
                     break
                 case 'shoes':
                     showCase!.querySelector<HTMLDivElement>('#selectedShoes')?.setAttribute('src', item.image)
-                    document.querySelector<HTMLDivElement>('#digShoes')?.setAttribute('src', item.image)
+                    stage.querySelector('image#selectedShoes').setAttribute('xlink:href', item.image)
                     break
                 case 'accessory':
                     showCase!.querySelector<HTMLDivElement>('#selectedAccessory')?.setAttribute('src', item.image)
-                    document.querySelector<HTMLDivElement>('#digAccessory')?.setAttribute('src', item.image)
+                    stage.querySelector('image#selectedAccessory').setAttribute('xlink:href', item.image)
                     break
             }
         })
@@ -160,6 +171,7 @@ export function inventory() {
 
     inventoryWrapper!.querySelector<HTMLDivElement>('#inventoryCloseBtn')!.addEventListener('click', () => {
         inventoryWrapper!.classList.toggle('hidden')
+        document.querySelector<HTMLDivElement>('#modals')!.classList.toggle('-z-50')
     })
 }
 
