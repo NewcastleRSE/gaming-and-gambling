@@ -93,7 +93,7 @@ export function dig(x: number, y: number) {
 
             let message = `You found the <span class="${find.rarity}">${rarity}</span> ${foundName} ${find.type}`
 
-            let timeSpent = `You've been playing for ${timer.getTimeValues().minutes} minutes ${timer.getTimeValues().seconds} seconds now and you've unlocked ${itemsFoundCount} item${itemsFoundCount > 1 ? 's' : ''}. With the in-game odds, you'll need to click at least X number of times to get the golden potato!`
+            let timeSpent = `You've been playing for ${timer.getTimeValues().minutes} minutes ${timer.getTimeValues().seconds} seconds now and you've unlocked ${itemsFoundCount} item${itemsFoundCount > 1 ? 's' : ''}. With the in-game odds, you'll need to click at least 20 times to get the golden potato!`
 
             let prompt = ''
 
