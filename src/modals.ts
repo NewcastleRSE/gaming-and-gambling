@@ -69,3 +69,12 @@ export function foundItem() {
         <button id="foundItemBtn" class="mx-auto btn-game">Continue</button>
     </div>`)
 }
+
+export function endGame() {
+    return Utils.htmlToElement(
+        `<div id="endGame" class="hidden modal fixed top-16 left-1/4 w-1/2 border-8 rounded-3xl p-8 text-xl text-white">
+            <p id="endGameMessage" class="mb-2"></p>
+            <p class="mb-4">Chance-based mechanisms are an increasing feature of digital games. To learn more about what they are and the impact they have on players, please visit our project website: <a target="_blank" href="https://www.gaminggamblingresearch.org.uk">https://www.gaminggamblingresearch.org.uk</a>.</p>
+            <button id="playAgainBtn" class="mx-auto btn-game">Play Again</button>
+        </div>`)
+}

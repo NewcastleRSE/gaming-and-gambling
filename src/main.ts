@@ -44,6 +44,7 @@ document.querySelector<HTMLDivElement>('#modals')!.append(Modals.digIn())
 document.querySelector<HTMLDivElement>('#modals')!.append(Modals.info())
 document.querySelector<HTMLDivElement>('#modals')!.append(Modals.odds())
 document.querySelector<HTMLDivElement>('#modals')!.append(Modals.foundItem())
+document.querySelector<HTMLDivElement>('#modals')!.append(Modals.endGame())
 
 document.querySelector<HTMLDivElement>('#modals')!.append(inventoryWrapper)
 document.querySelector<HTMLDivElement>('#footer')!.append(Footer.init())
@@ -59,6 +60,7 @@ const elements = {
   info: document.querySelector<HTMLDivElement>('#info'),
   odds: document.querySelector<HTMLDivElement>('#odds'),
   foundItem: document.querySelector<HTMLDivElement>('#foundItem'),
+  endGame: document.querySelector<HTMLDivElement>('#endGame'),
   footer: document.querySelector<HTMLDivElement>('#footer')
 }
 
@@ -139,5 +141,27 @@ elements.odds!.querySelector<HTMLDivElement>('#closeOddsBtn')!.addEventListener(
 
 elements.foundItem!.querySelector<HTMLDivElement>('#foundItemBtn')!.addEventListener('click', () => {
   elements.foundItem!.classList.toggle('hidden')
-  elements.modals!.classList.toggle('-z-50')
+
+  const digCount = document.querySelector<HTMLDivElement>('#digCount')!.innerText
+
+  if(digCount === '20') {
+
+    const goldenPotato = Potato.availableItems.find(item => item.name === 'goldenPotato')
+
+    if(goldenPotato?.found) {
+      elements.endGame!.querySelector<HTMLDivElement>('#endGameMessage')!.innerText = `Congratulations! You've won the golden potato!`
+    }
+    else {
+      elements.endGame!.querySelector<HTMLDivElement>('#endGameMessage')!.innerText = `Sorry you haven't won the golden potato. Thanks for playing!`
+    }
+
+    elements.endGame!.classList.toggle('hidden')
+  }
+  else {
+    elements.modals!.classList.toggle('-z-50')
+  }
+})
+
+elements.endGame!.querySelector<HTMLDivElement>('#playAgainBtn')!.addEventListener('click', () => {
+    window.location.reload()
 })
