@@ -134,13 +134,16 @@ export function dig(x: number, y: number) {
             updateClickCount(itemsFoundCount)
         }    
         else {
-            console.log({
-                common: itemsRemaining.common.length,
-                rare: itemsRemaining.rare.length,
-                veryRare: itemsRemaining.veryRare.length,
-                legendary: itemsRemaining.legendary.length,
-            })
+            updateClickCount(itemsFoundCount)
+            // console.log({
+            //     common: itemsRemaining.common.length,
+            //     rare: itemsRemaining.rare.length,
+            //     veryRare: itemsRemaining.veryRare.length,
+            //     legendary: itemsRemaining.legendary.length,
+            // })
         }
+
+
     }, 5000)
 }
 
