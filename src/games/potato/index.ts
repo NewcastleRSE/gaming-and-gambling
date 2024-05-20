@@ -4,6 +4,7 @@ import { playDig, playFirework } from './../../games/potato/sound'
 import Timer from 'easytimer.js'
 
 let itemsFoundCount = 0,
+    digCount = 1,
     gameStarted = false
 const timer = new Timer()
 
@@ -127,7 +128,9 @@ export function dig(x: number, y: number) {
             document.querySelector<HTMLDivElement>('#foundItem #foundItemPrompt')!.innerHTML = prompt
             document.querySelector<HTMLDivElement>('#foundItem #foundItemImage')!.setAttribute('alt', find.name)
             document.querySelector<HTMLDivElement>('#foundItem #foundItemImage')!.setAttribute('src', find.thumbnail)
+
             playFirework()
+            document.querySelector<HTMLDivElement>('#foundItem')!.dataset.digcount = digCount.toString()
             document.querySelector<HTMLDivElement>('#foundItem')!.classList.toggle('hidden')
             document.querySelector<HTMLDivElement>('#modals')!.classList.toggle('-z-50')
 
@@ -143,8 +146,9 @@ export function dig(x: number, y: number) {
             // })
         }
 
+        digCount++
 
-    }, 5000)
+    }, 50)
 }
 
 export function selectItem(name: string) {
