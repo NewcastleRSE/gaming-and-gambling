@@ -148,7 +148,7 @@ export function dig(x: number, y: number) {
 
         digCount++
 
-    }, 50)
+    }, 5000)
 }
 
 export function selectItem(name: string) {
