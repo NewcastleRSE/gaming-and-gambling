@@ -142,7 +142,7 @@ elements.odds!.querySelector<HTMLDivElement>('#closeOddsBtn')!.addEventListener(
 elements.foundItem!.querySelector<HTMLDivElement>('#foundItemBtn')!.addEventListener('click', () => {
   elements.foundItem!.classList.toggle('hidden')
 
-  const digCount = document.querySelector<HTMLDivElement>('#digCount')!.innerText
+  const digCount = elements.foundItem?.dataset.digcount
 
   if(digCount === '20') {
 
