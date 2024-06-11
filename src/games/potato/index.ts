@@ -116,7 +116,7 @@ export function dig(x: number, y: number) {
             }
 
             if(find.name === 'gold') {
-                message = `You did it! It only took you ${0} number of clicks and ${0} amount of time to win the golden potato. How does that feel?`
+                message = `You did it! It only took you ${digCount} clicks in ${timer.getTimeValues().minutes} minutes ${timer.getTimeValues().seconds} seconds to win the golden potato. How does that feel?`
             }
 
             document.querySelector<HTMLDivElement>('#foundItem #foundItemMessage')!.innerHTML = message
